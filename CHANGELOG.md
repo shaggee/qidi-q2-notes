@@ -15,6 +15,7 @@
 - tools/hotend_fan: hotend fan hysteresis (port of hotend-fan-hysteresis).
 - tools/screen_view: printer screen as a Fluidd camera (service from printer-screen-view).
 - tools/random_zhome: random Z re-home point after Z_TILT_ADJUST in PRINT_START.
+- Troubleshooting: nozzle cleaning off the plate holes (fixed Y in CLEAR_NOZZLE).
 
 ---
 
@@ -35,3 +36,4 @@
 - tools/hotend_fan: histereza wentylatora hotendu (port hotend-fan-hysteresis).
 - tools/screen_view: ekran drukarki jako kamera we Fluidd (usługa z printer-screen-view).
 - tools/random_zhome: losowy punkt ponownego bazowania Z po Z_TILT_ADJUST w PRINT_START.
+- Błędy: czyszczenie dyszy obok otworów płyty (stałe Y w CLEAR_NOZZLE).
