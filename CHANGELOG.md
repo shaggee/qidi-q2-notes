@@ -14,6 +14,7 @@
 - Purge line in front of the model verified on the printer.
 - tools/hotend_fan: hotend fan hysteresis (port of hotend-fan-hysteresis).
 - tools/screen_view: printer screen as a Fluidd camera (service from printer-screen-view).
+- tools/random_zhome: random Z re-home point after Z_TILT_ADJUST in PRINT_START.
 
 ---
 
@@ -33,3 +34,4 @@
 - Linia płukania przed modelem sprawdzona na drukarce.
 - tools/hotend_fan: histereza wentylatora hotendu (port hotend-fan-hysteresis).
 - tools/screen_view: ekran drukarki jako kamera we Fluidd (usługa z printer-screen-view).
+- tools/random_zhome: losowy punkt ponownego bazowania Z po Z_TILT_ADJUST w PRINT_START.

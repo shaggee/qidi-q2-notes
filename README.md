@@ -40,6 +40,7 @@ on a single printer with **already customised macros**, so read before copying.
 | [`tools/skip_flush`](tools/skip_flush) | Script that makes `PRINT_START` skip the ~75 s Box flush when the slot did not change (check / apply / restore) |
 | [`tools/hotend_fan`](tools/hotend_fan) | Hotend fan hysteresis and no false fan alarm on reheat (from qidi-q2-0204-tweaked; check / apply / restore) |
 | [`tools/screen_view`](tools/screen_view) | The printer's touch screen as a camera card in Fluidd (look only; service from qidi-q2-0204-tweaked) |
+| [`tools/random_zhome`](tools/random_zhome) | `PRINT_START` re-homes Z at a random point near the centre (less PEI wear; check / apply / restore) |
 | [`tools/box_trace`](tools/box_trace) | Read-only Klipper module that logs the parameters the QIDI Box code reads, and the G-code it runs |
 
 ## Credits
@@ -101,6 +102,7 @@ z **już zmienionymi makrami**, więc przeczytaj przed skopiowaniem.
 | [`tools/skip_flush`](tools/skip_flush) | Skrypt: `PRINT_START` pomija ~75 s płukania Boxa, gdy slot się nie zmienił (check / apply / restore) |
 | [`tools/hotend_fan`](tools/hotend_fan) | Histereza wentylatora hotendu, bez fałszywego alarmu przy ponownym grzaniu (z qidi-q2-0204-tweaked; check / apply / restore) |
 | [`tools/screen_view`](tools/screen_view) | Ekran dotykowy drukarki jako karta kamery we Fluidd (tylko podgląd; usługa z qidi-q2-0204-tweaked) |
+| [`tools/random_zhome`](tools/random_zhome) | `PRINT_START` bazuje Z w losowym punkcie przy środku (mniej zużycia PEI; check / apply / restore) |
 | [`tools/box_trace`](tools/box_trace) | Moduł Klippera tylko do odczytu: zapisuje parametry czytane przez kod Boxa QIDI i wykonywany G-code |
 
 Każdy dokument ma najpierw wersję angielską, a pod nią polską.
