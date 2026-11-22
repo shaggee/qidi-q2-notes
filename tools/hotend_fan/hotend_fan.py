@@ -147,6 +147,11 @@ def main():
         with open(tmp, "w", encoding="utf-8", newline="") as f:
             f.write(new.replace("\n", "\r\n") if crlf else new)
         shutil.copymode(path, tmp)
+        st = os.stat(path)
+        try:
+            os.chown(tmp, st.st_uid, st.st_gid)  # keep the owner when run with sudo
+        except PermissionError:
+            pass
         os.replace(tmp, path)
         print("Applied / wgrane: %s (backup / kopia: %s.hfan-%s)" % (path, name, stamp))
     print("Now / teraz: sudo systemctl restart klipper")
