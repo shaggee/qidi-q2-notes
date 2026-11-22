@@ -17,7 +17,7 @@ author's printer:
 | `screws_tilt_adjust` | ✅ | easy | [3](#3-printercfg-changes) |
 | `M84` keeping Z enabled | ✅ | medium | [4](#4-macro-changes) |
 | `PAUSE` stepper message fix | 🟡 (cosmetic) | medium | [4](#4-macro-changes) |
-| Skip flush on the same slot | 🟡 | advanced | [4](#4-macro-changes) |
+| Skip flush on the same slot | 🟡 | easy with [tools/skip_flush](tools/skip_flush), advanced by hand | [4](#4-macro-changes) |
 | `q2_tweaks` (probe retry, Box heater, load temperature memory, THR check) | ✅ | easy (script) | [5](#5-tools) |
 | `box_trace` | ✅ | easy | [5](#5-tools) |
 | Toolhead accelerometer fix | ✅ | advanced, at your own risk | [docs/toolhead-accelerometer.md](docs/toolhead-accelerometer.md) |
@@ -112,7 +112,7 @@ potwierdzone na drukarce autora:
 | `screws_tilt_adjust` | ✅ | łatwa | 3 |
 | `M84` bez wyłączania Z | ✅ | średnia | 4 |
 | Poprawka komunikatu w `PAUSE` | 🟡 (kosmetyka) | średnia | 4 |
-| Pomijanie płukania przy tym samym slocie | 🟡 | zaawansowana | 4 |
+| Pomijanie płukania przy tym samym slocie | 🟡 | łatwa z [tools/skip_flush](tools/skip_flush), ręcznie zaawansowana | 4 |
 | `q2_tweaks` | ✅ | łatwa (skrypt) | 5 |
 | `box_trace` | ✅ | łatwa | 5 |
 | Naprawa akcelerometru głowicy | ✅ | zaawansowana, na własne ryzyko | [docs/toolhead-accelerometer.md](docs/toolhead-accelerometer.md) |

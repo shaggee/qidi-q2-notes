@@ -1,6 +1,7 @@
 # PRINT_START: skip the Box flush when the slot did not change
 
 > **Untested** – proposed, not yet confirmed on a printer. Feedback welcome.
+> Automatic version: [tools/skip_flush](../tools/skip_flush).
 
 **EN** · [PL – wersja polska niżej](#polski)
 
@@ -43,6 +44,7 @@ manual flush after a long break with wet PETG.
 ## PRINT_START: pomiń płukanie Boxa, gdy slot się nie zmienił
 
 > **Niesprawdzone** – propozycja, jeszcze nie potwierdzona na drukarce. Uwagi mile widziane.
+> Wersja automatyczna: [tools/skip_flush](../tools/skip_flush).
 
 Fabryczny `PRINT_START` wykonuje `EXTRUSION_AND_FLUSH` (~75 s) przy każdym wydruku. Jeśli potrzebny slot jest już
 załadowany (`last_load_slot` w `saved_variables`), płukanie nic nie daje.

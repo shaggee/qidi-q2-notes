@@ -37,6 +37,7 @@ on a single printer with **already customised macros**, so read before copying.
 | [`macros/`](macros) | Macro changes as small, documented snippets (not whole QIDI files) |
 | [`orca/`](orca) | Start G-code (purge line in front of the model) and filament start G-code (Z offset) |
 | [`tools/q2_tweaks`](tools/q2_tweaks) | Script that applies selected fixes from qidi-q2-0204-tweaked to a printer with custom macros (check / apply / restore) |
+| [`tools/skip_flush`](tools/skip_flush) | Script that makes `PRINT_START` skip the ~75 s Box flush when the slot did not change (check / apply / restore) |
 | [`tools/box_trace`](tools/box_trace) | Read-only Klipper module that logs the parameters the QIDI Box code reads, and the G-code it runs |
 
 ## Credits
@@ -95,6 +96,7 @@ z **już zmienionymi makrami**, więc przeczytaj przed skopiowaniem.
 | [`macros/`](macros) | Zmiany w makrach jako małe, opisane fragmenty (nie całe pliki QIDI) |
 | [`orca/`](orca) | Początkowy G-code (linia płukania przed modelem) i G-code filamentu (offset Z) |
 | [`tools/q2_tweaks`](tools/q2_tweaks) | Skrypt wgrywający wybrane poprawki z qidi-q2-0204-tweaked na drukarkę ze zmienionymi makrami (check / apply / restore) |
+| [`tools/skip_flush`](tools/skip_flush) | Skrypt: `PRINT_START` pomija ~75 s płukania Boxa, gdy slot się nie zmienił (check / apply / restore) |
 | [`tools/box_trace`](tools/box_trace) | Moduł Klippera tylko do odczytu: zapisuje parametry czytane przez kod Boxa QIDI i wykonywany G-code |
 
 Każdy dokument ma najpierw wersję angielską, a pod nią polską.

@@ -8,6 +8,7 @@
 - Tools: q2_tweaks, box_trace.
 - All documents bilingual: English first, Polish below.
 - INSTALL.md with verified/proposed status, backups and undo; PETG override and layer-change retraction notes; Fluidd tips; skip-flush marked untested.
+- tools/skip_flush: automatic install of the same-slot flush skip.
 
 ---
 
@@ -21,3 +22,4 @@
 - Narzędzia: q2_tweaks, box_trace.
 - Wszystkie dokumenty dwujęzyczne: najpierw angielski, pod spodem polski.
 - INSTALL.md ze statusem sprawdzone/propozycja, kopiami i cofaniem; uwagi o nadpisaniach PETG i retrakcji przy zmianie warstwy; wskazówki Fluidd; pomijanie płukania oznaczone jako niesprawdzone.
+- tools/skip_flush: automatyczne wgrywanie pomijania płukania przy tym samym slocie.
