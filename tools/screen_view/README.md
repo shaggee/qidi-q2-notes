@@ -12,7 +12,8 @@ Service code (`q2_screen.py`, `q2-screen.service`): module `printer-screen-view`
 `screen_view.py` is the installer written here (checks first, Fluidd untouched). The original also adds a
 button to Fluidd's menu by editing `index.html`; that part is not included.
 
-Status: 🟡 checks matched the author's printer (480×272, 32 bit, `/webcam4/` → 8083 free). Not yet installed.
+Status: ✅ installed on the author's Q2 (2026-11-22): all checks OK, PNG via `/webcam4/`, camera card in Fluidd works.
+Not yet watched during a print.
 
 ## Install
 ```
@@ -45,7 +46,8 @@ Kod usługi (`q2_screen.py`, `q2-screen.service`): moduł `printer-screen-view` 
 `screen_view.py` to instalator napisany tutaj (najpierw sprawdza, Fluidd bez zmian). Oryginał dodaje też przycisk
 w menu Fluidd przez zmianę `index.html`; tej części tu nie ma.
 
-Status: 🟡 sprawdzenie zgodne z drukarką autora (480×272, 32 bit, `/webcam4/` → wolny 8083). Jeszcze nie zainstalowane.
+Status: ✅ zainstalowane na Q2 autora (2026-11-22): wszystkie sprawdzenia OK, PNG przez `/webcam4/`, karta kamery we
+Fluidd działa. Jeszcze nie obserwowane w trakcie druku.
 
 Instalacja: polecenia wyżej (`curl` trzech plików, `check`, `install`). Potem we Fluidd: **Settings → Cameras →
 Add camera**: nazwa `Ekran drukarki`, typ **MJPEG Adaptive**, URL `/webcam4/?action=snapshot`, docelowe FPS 2.
