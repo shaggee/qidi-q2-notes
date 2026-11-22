@@ -1,0 +1,6 @@
+*.pyc
+__pycache__/
+*.bin
+thr-before/
+thr-after*/
+*.zip
