@@ -52,8 +52,10 @@ M4 thread: 00:15 ≈ 0.18 mm. Screws only fix **tilt**; a bowed plate (centre hi
 the mesh. Here the full mesh range was ~0.25 mm with the centre ~0.1–0.14 mm higher in Y – normal.
 
 ## KAMP mesh margin
-The print-start mesh covers only the model area. Set *Printer → Basic information → Adaptive bed mesh
-margin = 10 mm* in Orca so the brim and the purge line are inside the measured area.
+The print-start mesh (`BED_MESH_CALIBRATE PROFILE=kamp`) covers only the model area. The margin is set **on the
+printer**, not in Orca: Fluidd → *Configuration* → `KAMP_Settings.cfg` → `variable_mesh_margin: 10`, then
+Save & Restart. This keeps the brim and the purge line inside the measured area. (Orca's *Adaptive bed mesh*
+margin has no effect here – the start G-code does not pass a mesh area to the printer.)
 
 ## Do not release the Z motors
 With `M84` disabling `stepper_z`/`stepper_z1`, the two lead screws can drift and the bed tilts. The next
@@ -89,8 +91,10 @@ Konfiguracja jak wyżej. Gwint M4: 00:15 ≈ 0.18 mm. Śruby poprawiają tylko *
 środek) zostaje i kompensuje ją siatka. Tu pełna siatka miała zakres ~0.25 mm, środek ~0.1–0.14 mm wyżej w osi Y – normalne.
 
 ### Margines KAMP
-Siatka przy starcie wydruku obejmuje tylko obszar modelu. Ustaw w Orce *Drukarka → Podstawowe informacje →
-Margines adaptacyjnej siatki = 10 mm*, żeby brim i linia płukania były w zmierzonym obszarze.
+Siatka przy starcie wydruku (`BED_MESH_CALIBRATE PROFILE=kamp`) obejmuje tylko obszar modelu. Margines ustawia się
+**na drukarce**, nie w Orce: Fluidd → *Configuration* → `KAMP_Settings.cfg` → `variable_mesh_margin: 10`, potem
+Save & Restart. Dzięki temu brim i linia płukania są w zmierzonym obszarze. (Margines *adaptacyjnej siatki* w Orce
+tu nic nie zmienia – G-code startowy nie przekazuje drukarce obszaru siatki.)
 
 ### Nie wyłączaj silników Z
 Gdy `M84` wyłącza `stepper_z`/`stepper_z1`, dwie śruby mogą się przekręcić i stół się przechyla. Następny start

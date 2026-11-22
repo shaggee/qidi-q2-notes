@@ -45,7 +45,7 @@ Nothing on the printer changes, safest place to start.
    (*Save as*), do not overwrite the system one.
 3. **Purge line** – [orca/start-gcode-purge-line.gcode](orca/start-gcode-purge-line.gcode). In *Printer
    settings → Machine G-code → Machine start G-code* find QIDI's two purge lines after `G4 P3000` and
-   replace them. Set *Adaptive bed mesh margin* to 10 mm.
+   replace them. Check `variable_mesh_margin: 10` in `KAMP_Settings.cfg` on the printer.
 
 ## 2. Find your macro file
 QIDI's macro file name differs between firmware versions and custom macro packs. Find the one with
@@ -135,7 +135,7 @@ Nic na drukarce się nie zmienia – najbezpieczniej zacząć tutaj.
    nie nadpisuj systemowego.
 3. **Linia płukania** – [orca/start-gcode-purge-line.gcode](orca/start-gcode-purge-line.gcode). W *Ustawienia
    drukarki → G-code maszyny → Początkowy G-code* znajdź dwie linie płukania QIDI po `G4 P3000` i zamień je.
-   Ustaw *Margines adaptacyjnej siatki* na 10 mm.
+   Sprawdź `variable_mesh_margin: 10` w `KAMP_Settings.cfg` na drukarce.
 
 ### 2. Znajdź swój plik makr
 Nazwa pliku makr QIDI różni się między wersjami firmware i pakietami makr. Znajdź ten z `PRINT_START`
