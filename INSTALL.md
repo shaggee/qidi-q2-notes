@@ -21,6 +21,7 @@ author's printer:
 | Skip flush on the same slot | ✅ | easy with [tools/skip_flush](tools/skip_flush), advanced by hand | [4](#4-macro-changes) |
 | `q2_tweaks` (probe retry, Box heater, load temperature memory, THR check) | ✅ | easy (script) | [5](#5-tools) |
 | `box_trace` | ✅ | easy | [5](#5-tools) |
+| `screen_view` (printer screen in Fluidd) | 🟡 | easy (script) | [tools/screen_view](tools/screen_view) |
 | `hotend_fan` (fan hysteresis) | ✅ | easy (script) | [tools/hotend_fan](tools/hotend_fan) |
 | Toolhead accelerometer fix | ✅ | advanced, at your own risk | [docs/toolhead-accelerometer.md](docs/toolhead-accelerometer.md) |
 | Block firmware updates | 🟡 | easy | [docs/security-and-updates.md](docs/security-and-updates.md) |
@@ -118,6 +119,7 @@ potwierdzone na drukarce autora:
 | Pomijanie płukania przy tym samym slocie | ✅ | łatwa z [tools/skip_flush](tools/skip_flush), ręcznie zaawansowana | 4 |
 | `q2_tweaks` | ✅ | łatwa (skrypt) | 5 |
 | `box_trace` | ✅ | łatwa | 5 |
+| `screen_view` (ekran drukarki we Fluidd) | 🟡 | łatwa (skrypt) | [tools/screen_view](tools/screen_view) |
 | `hotend_fan` (histereza wentylatora) | ✅ | łatwa (skrypt) | [tools/hotend_fan](tools/hotend_fan) |
 | Naprawa akcelerometru głowicy | ✅ | zaawansowana, na własne ryzyko | [docs/toolhead-accelerometer.md](docs/toolhead-accelerometer.md) |
 | Blokada aktualizacji | 🟡 | łatwa | [docs/security-and-updates.md](docs/security-and-updates.md) |

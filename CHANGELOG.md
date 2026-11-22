@@ -13,6 +13,7 @@
 - KAMP mesh margin: real file `config/KAMP/KAMP_settings.cfg` (root-owned, Fluidd save error), SSH fix; margin was 1.
 - Purge line in front of the model verified on the printer.
 - tools/hotend_fan: hotend fan hysteresis (port of hotend-fan-hysteresis).
+- tools/screen_view: printer screen as a Fluidd camera (service from printer-screen-view).
 
 ---
 
@@ -31,3 +32,4 @@
 - Margines siatki KAMP: właściwy plik `config/KAMP/KAMP_settings.cfg` (należy do root, błąd zapisu we Fluidd), zmiana przez SSH; było 1.
 - Linia płukania przed modelem sprawdzona na drukarce.
 - tools/hotend_fan: histereza wentylatora hotendu (port hotend-fan-hysteresis).
+- tools/screen_view: ekran drukarki jako kamera we Fluidd (usługa z printer-screen-view).
