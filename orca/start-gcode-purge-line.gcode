@@ -4,6 +4,8 @@
 ; --- purge line 5 mm in front of the model ---
 ; PL: OrcaSlicer -> Ustawienia drukarki -> G-code maszyny -> Początkowy G-code. Zastępuje dwie stałe linie
 ; płukania QIDI (po "G4 P3000") linią 5 mm przed modelem, w obszarze siatki (margines siatki 10 mm).
+; Stock lines end with "G1 X154 Z-0.1" (nozzle 0.1 mm into the plate) - this one never goes below Z0.
+; PL: fabryczne linie kończą się "G1 X154 Z-0.1" (dysza 0.1 mm w płytę) - ta nigdy nie schodzi poniżej Z0.
 G1 X{min(200, max(5, first_layer_print_min[0]))} Y{max(2, first_layer_print_min[1] - 5)} F30000
 G1 Z{initial_layer_print_height} F600
 G1 X{min(200, max(5, first_layer_print_min[0])) + 20} E5 F1200
