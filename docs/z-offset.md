@@ -1,5 +1,7 @@
 # Z offset on the Q2
 
+**EN** · [PL – wersja polska niżej](#polski)
+
 ## How it is stored
 - The value lives in `saved_variables.cfg` as `z_offset` (not in `[probe]` / SAVE_CONFIG).
 - `PRINT_START` sets the offset to **0** after homing (console: `Z offset = 0`), probes, makes the mesh and
@@ -37,3 +39,46 @@ SET_GCODE_OFFSET Z=0.12 MOVE=1    ; PETG
   Too low: transparent/ridged lines, elephant foot, scraping. Too high: round lines with gaps.
 - The brim is part of the first layer and uses the same offset. A thin brim with a good part bottom points to
   the mesh margin (see bed-leveling.md), not to the offset.
+
+---
+
+# Polski
+
+## Offset Z na Q2
+
+### Jak jest zapisywany
+- Wartość jest w `saved_variables.cfg` jako `z_offset` (nie w `[probe]` / SAVE_CONFIG).
+- `PRINT_START` po bazowaniu ustawia offset na **0** (konsola: `Z offset = 0`), mierzy, robi siatkę i dopiero
+  potem wczytuje zapisaną wartość (`set_zoffset`, bezwzględne `SET_GCODE_OFFSET Z=`). „Z offset = 0” w logu jest normalne.
+- `PRINT_END` / `CANCEL_PRINT` wywołują `save_zoffset`, które zapisuje offset **aktywny na końcu wydruku**.
+- Korekta na ekranie zmienia offset **względem obecnego**, a wynik zapisuje się po wydruku. Dwie korekty „+0.1”
+  na dwóch wydrukach dają +0.2 – wygląda, jakby się sumowało, ale ekran przy każdym wydruku pokazuje 0 / bieżący krok.
+
+Prawdziwy aktywny offset w trakcie druku: `GET_POSITION` → `gcode base: ... Z:`.
+Ręczne ustawienie (drukarka bezczynna): `SAVE_VARIABLE VARIABLE=z_offset VALUE=0.06`. Restart niepotrzebny.
+
+Wartości typu `1.3877787807814457e-17` lub `0.10000000000000002` to szum zmiennoprzecinkowy (= 0 / 0.1).
+
+### Offset dla każdego filamentu z OrcaSlicer
+PLA potrzebowało większego docisku niż PETG (skalibrowane +0.035 vs +0.12). Zamiast zmieniać wartość w drukarce
+przy każdej zmianie materiału, wpisz **bezwzględny** offset w *Ustawienia filamentu → Zaawansowane →
+G-code startowy filamentu*:
+
+```
+SET_GCODE_OFFSET Z=0.05 MOVE=1    ; PLA
+SET_GCODE_OFFSET Z=0.12 MOVE=1    ; PETG
+```
+
+- Wykonuje się po `PRINT_START`, więc nadpisuje zapisaną wartość; nic się nie sumuje.
+- Wykonuje się też przy **każdej zmianie filamentu** z Boxa, więc korekty z ekranu w trakcie druku znikną przy
+  następnej zmianie – poprawiaj profil.
+- Wydruki spoza Orki używają wartości zapisanej (tej, którą zostawił ostatni wydruk).
+
+### Kalibracja
+- Drukuj kwadrat 50×50 mm o wysokości **2–3 warstw**, nie jedną warstwę: jednowarstwowy test jest dla Orki
+  jednocześnie pierwszą i górną warstwą i nie wygląda jak spód prawdziwej części.
+- Kroki 0.05, potem 0.01–0.025.
+- Dobrze: linie lekko spłaszczone, stykają się, gładkie w dotyku, widoczny delikatny wzór, ostre krawędzie.
+  Za nisko: przezroczyste/prążkowane linie, stopa słonia, skrobanie. Za wysoko: okrągłe linie ze szczelinami.
+- Brim jest częścią pierwszej warstwy i ma ten sam offset. Cienki brim przy dobrym spodzie modelu wskazuje na
+  margines siatki (bed-leveling.md), a nie na offset.

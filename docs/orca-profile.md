@@ -1,5 +1,7 @@
 # OrcaSlicer profile for the Q2 (quality without slow prints)
 
+**EN** · [PL – wersja polska niżej](#polski)
+
 Starting point: QIDI's `0.20mm Standard @Qidi Q2` process. Names below are the English Orca names, with the
 Polish UI name in brackets where it helps.
 
@@ -108,3 +110,86 @@ Accelerations after the accelerometer fix and a new input shaper calibration
 
 Matte PLA changes sheen with speed: slower spots look glossier. Keep the outer wall speed even (small
 perimeters 70–80% instead of 50%) if you see glossy patches on small details.
+
+---
+
+# Polski
+
+## Profil OrcaSlicer dla Q2 (jakość bez wolnego druku)
+
+Punkt wyjścia: proces QIDI `0.20mm Standard @Qidi Q2`. Nazwy w nawiasach to polski interfejs Orki.
+
+### Pułapka czasu
+Pierwsza „jakościowa” wersja (3 ściany, Gyroid, kolejność ścian W/Z/W, nieograniczone objazdy, wolna ściana
+zewnętrzna) zmieniła wydruk **16 h 23 min** w **23 h 11 min**. Legenda w podglądzie (Typ linii) pokazała dlaczego:
+
+| Element | Przed | Po | Przyczyna |
+|---|---|---|---|
+| Ściana wewnętrzna | 2h46 | 5h30 | 3 ściany zamiast 2 |
+| Wypełnienie | 5h15 | 7h36 | Gyroid: Klipper zwalnia na każdym łuku (square corner velocity 8–9) |
+| Przejazdy | 1h41 | 2h34 | nieograniczone objazdy ścian |
+
+Dodatkowo: **Precyzyjna ściana nie działa przy kolejności W/Z/W** (Orca pokazuje ostrzeżenie). Cross Hatch też
+był wolniejszy od Grid (7h00 vs 5h15). Wynik końcowy: **17 h 15 min**, z lepszym szwem i nawisami.
+
+### Jakość
+| Ustawienie | Wartość | Dlaczego |
+|---|---|---|
+| Pozycja szwu | Wyrównany / Z tyłu | |
+| Szew ukośny (scarf) | Kontur, **warunkowy** | niewidoczny szew tylko tam, gdzie nie schowa się w narożniku |
+| Wycieranie do wewnątrz (Wipe inward) | wł. (Ekspert) | wycieranie do środka modelu, bez śladu obok szwu; wymaga *Wycierania podczas retrakcji* |
+| Wycieranie przed pętlą zewnętrzną | wł. | |
+| Dopasowanie łuków (Arc fitting) | **wył.** | Klipper |
+| Precyzyjna ściana | wł. | działa tylko z W/Z |
+| Generator ścian | Arachne | |
+| Maks. rozdzielczość ściany | 0.2 mm | gładsze łuki |
+| Kolejność ścian | **Wewnętrzna/Zewnętrzna** | |
+| Tylko jedna ściana na górnych powierzchniach | wł. | |
+| Unikaj przekraczania ścian | wł., **maks. objazd 100%** | mniej nitek (PETG) bez ogromnych objazdów |
+| Kompensacja przepływu małych obszarów | wł. (model domyślny) | |
+
+### Wytrzymałość
+| Ustawienie | Wartość | Dlaczego |
+|---|---|---|
+| Liczba ścian | **2** (3 tylko dla części mocnych) | 3. ściana kosztowała ~3 h |
+| Dolne warstwy | 4 | |
+| Wzór wypełnienia | **Grid** | najszybszy na Klipperze |
+| Wypełnianie szczelin | Górne i dolne powierzchnie | bez dziur na górze |
+
+### Prędkości
+| Ustawienie | PLA | PETG |
+|---|---|---|
+| Ściana zewnętrzna | 120 mm/s | 80–100 mm/s |
+| Ściana wewnętrzna | 200 | 150 |
+| Wypełnienie | 250 (ograniczone maks. przepływem filamentu) | to samo |
+| Górna powierzchnia | 100 | 60–80 |
+| Zwalniaj przy zawiniętych obwodach | **wył.** (dużo czasu na dużych częściach) | wył. |
+
+Przyspieszenia po naprawie akcelerometru i nowej kalibracji Input Shapera (X 93.2 Hz, Y 47.2 Hz, sugerowane maks. ≈ 6000):
+zwykły druk 6000, ściana zewnętrzna 4000, wewnętrzna 5000, górna powierzchnia 3000 mm/s².
+
+### Inne
+| Ustawienie | Wartość | Dlaczego |
+|---|---|---|
+| Brim | brak dla PLA; **uszy myszy** dla dużych płaskich części z PETG | |
+| Odstęp brimu od modelu | 0.1 mm | |
+| Brim podąża za skompensowanym konturem | **wł.** | bez tego kompensacja stopy słonia (0.15) poszerza odstęp do ~0.35 mm i brim nie dotyka modelu |
+| Odstęp Z podpory od góry | 0.25 mm (PETG), 0.2 (PLA) | |
+| Warstwa łącząca podpory | odstęp 0.2 mm, 3 warstwy, prasowanie wł. | gładszy spód nad podporami |
+
+Ustawienia drukarki:
+- **Margines adaptacyjnej siatki stołu: 10 mm.** Przy 0 siatka KAMP mierzy tylko obszar modelu, więc brim i linia
+  płukania leżą na niezmierzonym miejscu (cienki, przezroczysty brim).
+- **Maks. jerk X/Y = `square_corner_velocity` z printer.cfg** (tu 8).
+
+### Profile filamentów
+PLA (cool plate): dysza 210 °C, stół 45/40 °C (płyta 30–50 °C), wentylator pomocniczy 40% (20% gdy duże płaskie
+części podnoszą rogi). Przepływ, PA, maks. przepływ i retrakcja z kalibracji.
+
+SUNLU PETG: dysza 250/245 °C, stół 65/60 °C na cool plate (płyta 50–70 °C), klej w sztyfcie jako separator,
+przepływ 0.93, PA 0.07, maks. przepływ 12–13 mm³/s, retrakcja 0.4 mm, wentylator maks. 40%, nawisy/mosty 90%,
+min. prędkość 20 mm/s.
+
+### PLA matowe
+Matowe PLA zmienia połysk z prędkością: wolniejsze miejsca są bardziej błyszczące. Przy błyszczących plamach na
+małych detalach ustaw małe obwody na 70–80% zamiast 50%.

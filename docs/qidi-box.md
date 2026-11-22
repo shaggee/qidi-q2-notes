@@ -1,5 +1,7 @@
 # QIDI Box on the Q2: what the code does and what can be tuned
 
+**EN** · [PL – wersja polska niżej](#polski)
+
 ## Where the logic lives
 `T_MANAGER`, `BOX_PRINT_START`, `E_LOAD`, `E_UNLOAD`, `CUT_FILAMENT`, `CLEAR_FLUSH`, `CLEAR_OOZE` are **not
 macros**. They are compiled Cython modules in `~/klipper/klippy/extras/` (`box_extras.so`, `box_stepper.so`,
@@ -63,3 +65,44 @@ Changing the mapping during a pause (`SAVE_VARIABLE VARIABLE=value_t0 VALUE="'sl
 The cut itself (`CUT_FILAMENT_1`) has no extruder move and works cold. The Box unload heats the nozzle
 inside the closed code; Valve-Oil's cold unload wraps specific Max 4 / Plus 5 builds and does not apply to the
 Q2. Lowering `min_extrude_temp` does not help and removes a safety check.
+
+---
+
+# Polski
+
+## QIDI Box na Q2: co robi kod i co można stroić
+
+### Gdzie jest logika
+`T_MANAGER`, `BOX_PRINT_START`, `E_LOAD`, `E_UNLOAD`, `CUT_FILAMENT`, `CLEAR_FLUSH`, `CLEAR_OOZE` to **nie makra**,
+tylko skompilowane moduły Cython w `~/klipper/klippy/extras/` (`box_extras.so`, `box_stepper.so`,
+`multi_color_controller.so`, `box2base.so`, ...). `box.cfg` zawiera tylko piny i sprzęt.
+
+W tym firmware napisy w modułach są skompresowane zlib (Cython 3.2); po dekompresji widać wbudowany G-code, np.
+stałe czekanie `G4 P5000`, grzanie `M109` przy rozładunku i płukanie typu `G1 E100 F600`.
+`multi_color_controller.so` realizuje przepływ kroków (`EXT_HEAT`, `EXT_CUT`, `EXT_UNLOAD`, `EXT_LOAD`, `EXT_WIPE`, ...).
+
+### Parametry ruchu
+`box_stepper.so` czyta ruch przez `box_extras.get_value_by_key(klucz, domyślna)`, która szuka klucza w
+`saved_variables`. Wartości fabryczne w tabeli wyżej odczytano narzędziem [`tools/box_trace`](../tools/box_trace).
+
+### Nieudane przyspieszenie
+Valve-Oil na Max 4 (ta sama głowica) używa podejścia 25 mm/s i `exl_2` = 55 mm. Na tym Q2 ustawienie
+`extruder_load_length_3_speed=20` i `exl_2=60` dało błąd `QDC_100_005_000_001` „The filament failed to enter the
+extruder” – filament nie doszedł nawet do etapu zwalniania. Najpewniej krótsze `exl_2` zostawiło końcówkę w kołach
+ekstrudera, gdy Box ją cofał, i ją zdeformowało. **Przywróć wartości fabryczne**, nie zmieniaj dwóch wartości naraz;
+na Q2 zostawiłbym obie fabryczne.
+
+### Czasy startu wydruku (log, 9 wydruków)
+Bazowanie 40–48 s, Box 36–46 s (~2 min przy zmianie slotu), płukanie **~75 s przy każdym wydruku**, nawet z tym
+samym slotem, czyszczenie dyszy 67–74 s, czekanie na stół ~14 s, Z tilt 28–35 s.
+Pominięcie płukania przy niezmienionym slocie oszczędza ~55 s: [../macros/print-start-skip-flush.md](../macros/print-start-skip-flush.md).
+
+### Sloty przy pauzie
+`RESUME` ładuje slot przypisany do narzędzia (`value_t0`, `value_t1`, ... w `saved_variables`), a nie filament
+włożony ręcznie. Żeby kontynuować inną szpulą, włóż ją **do tego samego slotu**. Zmiana przypisania w trakcie pauzy
+(`SAVE_VARIABLE VARIABLE=value_t0 VALUE="'slot2'"`) nie była sprawdzona.
+
+### Rozładunek na zimno / cięcie
+Samo cięcie (`CUT_FILAMENT_1`) nie rusza ekstruderem i działa na zimno. Rozładunek Boxa grzeje dyszę w zamkniętym
+kodzie; zimny rozładunek z Valve-Oil dotyczy konkretnych wersji Max 4 / Plus 5, nie Q2. Obniżanie
+`min_extrude_temp` nie pomaga i usuwa zabezpieczenie.

@@ -1,5 +1,7 @@
 # Errors met on the way
 
+**EN** · [PL – wersja polska niżej](#polski)
+
 | Message | Meaning / fix |
 |---|---|
 | `!! Malformed command 'SET_VELOCITY_LIMIT SQUARE_CORNER_VELOCITY=9 Z4 E4'` | OrcaSlicer 2.6.0-dev wrote Marlin-style jerk into a Klipper command (PA calibration). Remove ` Z4 E4` from the exported G-code. |
@@ -16,3 +18,26 @@
 | Brim does not touch the part | Brim gap + elephant-foot compensation; enable *Brim follows compensated outline*. |
 | Brim thin / transparent, part bottom fine | Brim outside the KAMP mesh; set adaptive mesh margin 10 mm. |
 | "Resume" unloads the filament I loaded and loads the old one | The print is bound to the slot mapping; put the new spool in the same slot. |
+
+---
+
+# Polski
+
+## Napotkane błędy
+
+| Komunikat | Znaczenie / rozwiązanie |
+|---|---|
+| `!! Malformed command 'SET_VELOCITY_LIMIT ... Z4 E4'` | OrcaSlicer 2.6.0-dev wpisał jerk w stylu Marlina do polecenia Klippera (kalibracja PA). Usuń ` Z4 E4` z G-code. |
+| `!! No trigger on probe after full movement` (przy „Start tilt adjust”) | Dysza nie dotknęła stołu po jednej stronie. Tu: `M84` wyłączył silniki Z, stół się przechylił. Wyłącz/włącz, `G28`, `Z_TILT_ADJUST`; trzymaj Z włączone ([macros/m84-keep-z.cfg](../macros/m84-keep-z.cfg)). Wyczyść też czubek dyszy. |
+| `Retrying homing (1/5) after error: No trigger on z ...` | Ta sama rodzina: brudna dysza / wyciekający filament tłumi czujnik nacisku. |
+| `Probe samples exceed tolerance. Retrying...` | Kulka plastiku na dyszy. Zobacz też `probe-retry-fix` w [tools/q2_tweaks](../tools/q2_tweaks). |
+| `Code:QDE_004_013 Detected wrapping filament` | Wykrycie owinięcia filamentu. Sprawdź dyszę; fałszywe alarmy są częste przy czułości `'HIGH'`. |
+| Ekran: `Defect detected in stir-fried noodles. QDC_500_005_005_002` | Źle przetłumaczony alarm „spaghetti” z kamery AI. Kontynuuj, jeśli wydruk jest OK. Niższa czułość: `SAVE_VARIABLE VARIABLE=noodle_sensitivity_level VALUE="'MEDIUM'"`. |
+| `SET_STEPPER_ENABLE: Invalid stepper "box_stepper slot0"` | Wypisuje makro `PAUSE` (nieszkodliwy błąd cudzysłowów, poprawka w [macros/pause-box-stepper.cfg](../macros/pause-box-stepper.cfg)). Oznacza, że była pauza; przyczyna jest w liniach obok / na ekranie. |
+| `QDC_100_005_000_001 The filament failed to enter the extruder` | Tu przez zmienione parametry Boxa (qidi-box.md). Przywróć wartości fabryczne, przytnij końcówkę prosto. |
+| `idle_timeout: Timeout set to 259200.00 s` | `PAUSE` wydłuża timeout do 72 h. To nie błąd. |
+| Drukarka bierze ~50 W po wydruku | Silniki nadal włączone (+ wentylator płyty, który zależy od silników Z). `M84` zmniejsza do ~30 W, ale uwaga na Z. |
+| Filament wycieka po zatrzymaniu | Normalne przy gorącej dyszy. Wysusz PETG; przy długich pauzach obniż temperaturę dyszy. |
+| Brim nie dotyka modelu | Odstęp brimu + kompensacja stopy słonia; włącz *Brim podąża za skompensowanym konturem*. |
+| Brim cienki / przezroczysty, spód modelu OK | Brim poza siatką KAMP; margines siatki 10 mm. |
+| „Wznów” wyładowuje włożony filament i ładuje stary | Wydruk jest przypisany do slotu; włóż nową szpulę do tego samego slotu. |

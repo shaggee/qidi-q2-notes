@@ -1,5 +1,7 @@
 # Toolhead accelerometer fix (383 → 1603 samples/s), done from a Linux host
 
+**EN** · [PL – wersja polska niżej](#polski)
+
 QIDI's toolhead firmware THR 02.02.01.08 lacks Klipper commit 6269dda (LIS2DW FIFO), so the accelerometer
 delivers ~390 samples/s instead of 1600 ([QIDI_Q2 #39](https://github.com/QIDITECH/QIDI_Q2/issues/39)) and
 input shaper calibration sees only part of the vibrations.
@@ -120,3 +122,42 @@ Clean up: `ssh -t mks@PRINTER 'sudo rm -rf /tmp/q2_thr_tools'`
 
 A QIDI firmware update that ships a new toolhead firmware overwrites the fix – run `TWEAKED_THR_CHECK` after
 any update.
+
+---
+
+# Polski
+
+## Naprawa akcelerometru głowicy (383 → 1603 próbek/s) z hosta Linux
+
+Firmware głowicy QIDI THR 02.02.01.08 nie ma poprawki Klippera 6269dda (FIFO LIS2DW), więc akcelerometr daje
+~390 próbek/s zamiast 1600 ([QIDI_Q2 #39](https://github.com/QIDITECH/QIDI_Q2/issues/39)), a kalibracja Input Shapera
+widzi tylko część drgań.
+
+Procedura według [qidi-q2-0204-tweaked – TOOLHEAD_ACCELEROMETER](https://github.com/muchak1994-lpg/qidi-q2-0204-tweaked/blob/main/docs/TOOLHEAD_ACCELEROMETER.md),
+wykonana z komputera z Linuxem (host Proxmox) zamiast Windows. **Wgrywanie firmware głowicy na własne ryzyko.**
+Najpierw przeczytaj oryginalny opis. `PRINTER` zamień na IP drukarki. Użytkownik SSH `mks` (sudo).
+
+Polecenia i oczekiwane wyniki są w wersji angielskiej powyżej (są identyczne). Kroki:
+
+0. **Sprawdzenie (tylko odczyt):** `TWEAKED_THR_CHECK` w konsoli Fluidd; kontynuuj tylko, gdy pokazuje 383 próbek/s,
+   firmware `1d34b4b0` i bootloader `31f8344d`. Potem `TWEAKED_THR_CHECK SAVE=1` i pobierz `config/q2_thr_backup/`.
+1. **Narzędzia** na hoście: pobierz flasher Valve-Oil i `lis2dw_patch.py` z konkretnych commitów, sprawdź sumy SHA-256.
+2. **Skopiuj flasher na drukarkę** i sprawdź sumy tam.
+3. **Zatrzymaj Klippera i program ekranu** (`inactive` `inactive`).
+4. **Odczytaj oryginalny firmware** (`thr-before`) – to jest droga powrotu, zachowaj go.
+5. **Test bootloadera** (nic nie kasuje) i ponowny odczyt – te same sumy.
+6. **Zbuduj poprawiony obraz z własnego oryginału** – suma `9d2360ba…`.
+7. **Wgranie** (jedyny krok zmieniający głowicę). Nie wyłączaj zasilania i nie zamykaj terminala, dopóki nie
+   pojawi się `EXIT_CODE`. `0` = OK; `4` = zapis się nie udał, przywrócono oryginał; `1` lub `5` = stop, drukarka
+   włączona, poproś o pomoc.
+8. **Weryfikacja:** `"verified": true`, aplikacja `9d2360ba…`, bootloader `31f8344d…`.
+9. **Uruchom usługi**, `TWEAKED_THR_CHECK` → 1603 próbek/s, potem `G28`, `SHAPER_CALIBRATE` (QIDI nie bazuje
+   sam), `SAVE_CONFIG`. Na koniec usuń `/tmp/q2_thr_tools`.
+
+### Input Shaper przed / po
+| Oś | Przed (383 próbek/s) | Po (1603 próbek/s) | Sugerowane maks. przysp. |
+|---|---|---|---|
+| X | 3hump_ei 68.8 Hz | **3hump_ei 93.2 Hz** | 6200 |
+| Y | mzv 42.2 Hz | **mzv 47.2 Hz** | 6600 |
+
+Aktualizacja QIDI z nowym firmware głowicy nadpisze poprawkę – po każdej aktualizacji uruchom `TWEAKED_THR_CHECK`.

@@ -6,3 +6,16 @@
 - Macros: M84 keeping Z, PAUSE stepper fix, z_tilt tolerance, screws_tilt_adjust, PRINT_START same-slot flush skip.
 - Orca: purge line in front of the model, per-filament Z offset.
 - Tools: q2_tweaks, box_trace.
+- All documents bilingual: English first, Polish below.
+
+---
+
+# Polski
+
+## 2026-11
+- Pierwsza wersja: profil Orca, kalibracja, offset Z, poziomowanie stołu, analiza QIDI Box, opis naprawy
+  akcelerometru głowicy, błędy, bezpieczeństwo i blokada aktualizacji.
+- Makra: M84 bez wyłączania Z, poprawka PAUSE, tolerancja z_tilt, screws_tilt_adjust, pomijanie płukania przy tym samym slocie.
+- Orca: linia płukania przed modelem, offset Z dla każdego filamentu.
+- Narzędzia: q2_tweaks, box_trace.
+- Wszystkie dokumenty dwujęzyczne: najpierw angielski, pod spodem polski.

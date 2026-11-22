@@ -1,5 +1,7 @@
 # PRINT_START: skip the Box flush when the slot did not change
 
+**EN** · [PL – wersja polska niżej](#polski)
+
 Stock `PRINT_START` runs `EXTRUSION_AND_FLUSH` (~75 s) on every print. If the slot needed by the print is
 already loaded (`last_load_slot` in `saved_variables`), the flush is pointless.
 
@@ -31,3 +33,20 @@ backup first. Line names differ slightly between firmware versions – find the 
 Status: the logic is simple, but check the first prints (console shows `Same slot slotN - skipping flush`).
 Old filament residue in the nozzle is then purged only by the purge line – fine for the same spool, do a
 manual flush after a long break with wet PETG.
+
+---
+
+# Polski
+
+## PRINT_START: pomiń płukanie Boxa, gdy slot się nie zmienił
+
+Fabryczny `PRINT_START` wykonuje `EXTRUSION_AND_FLUSH` (~75 s) przy każdym wydruku. Jeśli potrzebny slot jest już
+załadowany (`last_load_slot` w `saved_variables`), płukanie nic nie daje.
+
+Edytuj `PRINT_START` w pliku makr QIDI (zrób kopię). Nazwy linii mogą się trochę różnić między wersjami firmware.
+1. Na początku makra dodaj trzy linie `{% set ... %}` (wyżej).
+2. Zamień płukanie po `BOX_PRINT_START` na blok `{% if same_slot %}` (wyżej).
+3. Jeśli makro dalej liczy `box_flushed`, dopisz do niego `and not same_slot`.
+
+Sprawdź pierwsze wydruki (konsola pokaże `Same slot slotN - skipping flush`). Resztki w dyszy usuwa wtedy tylko
+linia płukania – przy tej samej szpuli to wystarcza; po długiej przerwie z wilgotnym PETG przepłucz ręcznie.
