@@ -16,8 +16,8 @@ and a reheat while the fan is running can raise a false fan alarm (the RPM watch
 Both files are changed only if **all 9 anchors** are found exactly once. LF and CRLF files. Backups
 `<file>.hfan-<date>`.
 
-Status: 🟡 tested on QIDI's public Q2 Klipper source (all anchors, compiles, LF/CRLF, restore).
-Not yet on the author's printer.
+Status: ✅ installed on the author's Q2 (2026-11-22, all 9 anchors OK, Klipper runs). Also tested on QIDI's
+public Q2 Klipper source (compiles, LF/CRLF, restore). On the author's printer the files needed `sudo`.
 
 ## Use (printer idle)
 ```
@@ -53,8 +53,8 @@ histerezy, a ponowne grzanie przy pracującym wentylatorze może dać fałszywy 
 Oba pliki zmieniane są tylko wtedy, gdy znaleziono **wszystkie 9 miejsc** dokładnie raz. Pliki LF i CRLF.
 Kopie `<plik>.hfan-<data>`.
 
-Status: 🟡 sprawdzone na publicznym źródle Klippera QIDI dla Q2 (wszystkie miejsca, kompilacja, LF/CRLF,
-przywracanie). Jeszcze nie na drukarce autora.
+Status: ✅ wgrane na Q2 autora (2026-11-22, wszystkie 9 miejsc OK, Klipper działa). Testowane też na publicznym
+źródle Klippera QIDI (kompilacja, LF/CRLF, przywracanie). Na drukarce autora pliki wymagały `sudo`.
 
 Użycie (drukarka bezczynna): polecenia wyżej (`curl`, `check`, `apply`, `sudo systemctl restart klipper` –
 `FIRMWARE_RESTART` nie przeładowuje plików .py). Cofnięcie: `python3 hotend_fan.py restore` + restart Klippera.
