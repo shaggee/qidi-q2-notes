@@ -54,7 +54,8 @@ the mesh. Here the full mesh range was ~0.25 mm with the centre ~0.1–0.14 mm h
 ## KAMP mesh margin
 The print-start mesh (`BED_MESH_CALIBRATE PROFILE=kamp`) covers only the model area. The margin is set **on the
 printer**, not in Orca: Fluidd → *Configuration* → `KAMP_Settings.cfg` → `variable_mesh_margin: 10`, then
-Save & Restart. This keeps the brim and the purge line inside the measured area. (Orca's *Adaptive bed mesh*
+Save & Restart. This keeps the brim and the purge line inside the measured area.
+QIDI's public config has 10, but the author's printer had **1** – check yours. (Orca's *Adaptive bed mesh*
 margin has no effect here – the start G-code does not pass a mesh area to the printer.)
 
 ## Do not release the Z motors
@@ -93,7 +94,8 @@ Konfiguracja jak wyżej. Gwint M4: 00:15 ≈ 0.18 mm. Śruby poprawiają tylko *
 ### Margines KAMP
 Siatka przy starcie wydruku (`BED_MESH_CALIBRATE PROFILE=kamp`) obejmuje tylko obszar modelu. Margines ustawia się
 **na drukarce**, nie w Orce: Fluidd → *Configuration* → `KAMP_Settings.cfg` → `variable_mesh_margin: 10`, potem
-Save & Restart. Dzięki temu brim i linia płukania są w zmierzonym obszarze. (Margines *adaptacyjnej siatki* w Orce
+Save & Restart. Dzięki temu brim i linia płukania są w zmierzonym obszarze.
+Publiczna konfiguracja QIDI ma 10, ale drukarka autora miała **1** – sprawdź swoją. (Margines *adaptacyjnej siatki* w Orce
 tu nic nie zmienia – G-code startowy nie przekazuje drukarce obszaru siatki.)
 
 ### Nie wyłączaj silników Z
