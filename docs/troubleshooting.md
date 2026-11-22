@@ -16,9 +16,10 @@
 | Printer draws ~50 W idle after a print | Motors still enabled (+ board fan, which follows the Z steppers). `M84` drops it to ~30 W but see the Z warning above. |
 | Filament oozes after stopping | Normal (hot nozzle). Dry PETG; during long pauses lower the nozzle temperature. |
 | Brim does not touch the part | Brim gap + elephant-foot compensation; enable *Brim follows compensated outline*. |
-| Brim thin / transparent, part bottom fine | Brim outside the KAMP mesh; `variable_mesh_margin: 10` in `KAMP_Settings.cfg`. |
+| Brim thin / transparent, part bottom fine | Brim outside the KAMP mesh; `variable_mesh_margin: 10` in `KAMP/KAMP_settings.cfg`. |
 | "Resume" unloads the filament I loaded and loads the old one | The print is bound to the slot mapping; put the new spool in the same slot. |
 | Mark / scuff on the plate at the front edge, around X 154–158 | QIDI's stock Orca start G-code ends each of its two purge lines with `G1 X154 Z-0.1` + `G1 X158`: the nozzle goes 0.1 mm *below* the plate surface and drags 4 mm to break the strand. Change both to `G1 X154 Z0.1`, or use [orca/start-gcode-purge-line.gcode](../orca/start-gcode-purge-line.gcode). |
+| Fluidd: *Internal server error* when saving a config file | The file (or its folder) belongs to `root`, Moonraker runs as `qidi` and cannot write it. Example: `config/KAMP/KAMP_settings.cfg`. Edit with `sudo` over SSH or `chown` the folder – see [bed-leveling.md](bed-leveling.md#kamp-mesh-margin). Check with `ls -la`. |
 
 ---
 
@@ -40,6 +41,7 @@
 | Drukarka bierze ~50 W po wydruku | Silniki nadal włączone (+ wentylator płyty, który zależy od silników Z). `M84` zmniejsza do ~30 W, ale uwaga na Z. |
 | Filament wycieka po zatrzymaniu | Normalne przy gorącej dyszy. Wysusz PETG; przy długich pauzach obniż temperaturę dyszy. |
 | Brim nie dotyka modelu | Odstęp brimu + kompensacja stopy słonia; włącz *Brim podąża za skompensowanym konturem*. |
-| Brim cienki / przezroczysty, spód modelu OK | Brim poza siatką KAMP; `variable_mesh_margin: 10` w `KAMP_Settings.cfg`. |
+| Brim cienki / przezroczysty, spód modelu OK | Brim poza siatką KAMP; `variable_mesh_margin: 10` w `KAMP/KAMP_settings.cfg`. |
 | „Wznów” wyładowuje włożony filament i ładuje stary | Wydruk jest przypisany do slotu; włóż nową szpulę do tego samego slotu. |
 | Ślad / otarcie na płycie przy przedniej krawędzi, około X 154–158 | Fabryczny G-code startowy QIDI w Orce kończy każdą z dwóch linii płukania `G1 X154 Z-0.1` + `G1 X158`: dysza schodzi 0.1 mm *poniżej* płyty i ciągnie 4 mm, żeby urwać nitkę. Zmień obie na `G1 X154 Z0.1` albo użyj [orca/start-gcode-purge-line.gcode](../orca/start-gcode-purge-line.gcode). |
+| Fluidd: *Internal server error* przy zapisie pliku konfiguracji | Plik (lub folder) należy do `root`, a Moonraker działa jako `qidi` i nie może go zapisać. Przykład: `config/KAMP/KAMP_settings.cfg`. Edytuj przez SSH z `sudo` albo zmień właściciela folderu – zobacz [bed-leveling.md](bed-leveling.md). Sprawdzenie: `ls -la`. |

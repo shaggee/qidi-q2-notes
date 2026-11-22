@@ -13,6 +13,7 @@ author's printer:
 | Per-filament Z offset (Orca) | ✅ | easy | [1](#1-orcaslicer-changes) |
 | Orca profile settings | ✅ | easy | [1](#1-orcaslicer-changes) |
 | Purge line in front of the model (Orca) | 🟡 | easy | [1](#1-orcaslicer-changes) |
+| KAMP mesh margin 10 mm | ✅ | easy (SSH) | [docs/bed-leveling.md](docs/bed-leveling.md#kamp-mesh-margin) |
 | `z_tilt` tolerance | ✅ | easy | [3](#3-printercfg-changes) |
 | `screws_tilt_adjust` | ✅ | easy | [3](#3-printercfg-changes) |
 | `M84` keeping Z enabled | ✅ | medium | [4](#4-macro-changes) |
@@ -45,7 +46,7 @@ Nothing on the printer changes, safest place to start.
    (*Save as*), do not overwrite the system one.
 3. **Purge line** – [orca/start-gcode-purge-line.gcode](orca/start-gcode-purge-line.gcode). In *Printer
    settings → Machine G-code → Machine start G-code* find QIDI's two purge lines after `G4 P3000` and
-   replace them. Check `variable_mesh_margin: 10` in `KAMP_Settings.cfg` on the printer.
+   replace them. Check `variable_mesh_margin: 10` in `KAMP/KAMP_settings.cfg` on the printer.
 
 ## 2. Find your macro file
 QIDI's macro file name differs between firmware versions and custom macro packs. Find the one with
@@ -108,6 +109,7 @@ potwierdzone na drukarce autora:
 | Offset Z dla każdego filamentu (Orca) | ✅ | łatwa | 1 |
 | Ustawienia profilu Orca | ✅ | łatwa | 1 |
 | Linia płukania przed modelem (Orca) | 🟡 | łatwa | 1 |
+| Margines siatki KAMP 10 mm | ✅ | łatwa (SSH) | [docs/bed-leveling.md](docs/bed-leveling.md) |
 | Tolerancja `z_tilt` | ✅ | łatwa | 3 |
 | `screws_tilt_adjust` | ✅ | łatwa | 3 |
 | `M84` bez wyłączania Z | ✅ | średnia | 4 |
@@ -135,7 +137,7 @@ Nic na drukarce się nie zmienia – najbezpieczniej zacząć tutaj.
    nie nadpisuj systemowego.
 3. **Linia płukania** – [orca/start-gcode-purge-line.gcode](orca/start-gcode-purge-line.gcode). W *Ustawienia
    drukarki → G-code maszyny → Początkowy G-code* znajdź dwie linie płukania QIDI po `G4 P3000` i zamień je.
-   Sprawdź `variable_mesh_margin: 10` w `KAMP_Settings.cfg` na drukarce.
+   Sprawdź `variable_mesh_margin: 10` w `KAMP/KAMP_settings.cfg` na drukarce.
 
 ### 2. Znajdź swój plik makr
 Nazwa pliku makr QIDI różni się między wersjami firmware i pakietami makr. Znajdź ten z `PRINT_START`

@@ -80,7 +80,7 @@ Accelerations after the accelerometer fix and a new input shaper calibration
 | Support top interface spacing | 0.2 mm, 3 layers, ironing on | smoother underside over supports |
 
 ### Printer settings
-- **KAMP mesh margin 10 mm** – set on the printer (`KAMP_Settings.cfg` → `variable_mesh_margin`), not in Orca;
+- **KAMP mesh margin 10 mm** – set on the printer (`KAMP/KAMP_settings.cfg` → `variable_mesh_margin`), not in Orca;
   see [bed-leveling.md](bed-leveling.md). With 0 the brim and the purge line are printed on an unmeasured area.
 - **Max jerk X/Y = `square_corner_velocity` from printer.cfg** (8 on this printer).
 
@@ -187,7 +187,7 @@ zwykły druk 6000, ściana zewnętrzna 4000, wewnętrzna 5000, górna powierzchn
 | Warstwa łącząca podpory | odstęp 0.2 mm, 3 warstwy, prasowanie wł. | gładszy spód nad podporami |
 
 Ustawienia drukarki:
-- **Margines siatki KAMP 10 mm** – ustawia się na drukarce (`KAMP_Settings.cfg` → `variable_mesh_margin`), nie w
+- **Margines siatki KAMP 10 mm** – ustawia się na drukarce (`KAMP/KAMP_settings.cfg` → `variable_mesh_margin`), nie w
   Orce; zobacz [bed-leveling.md](bed-leveling.md). Przy 0 brim i linia płukania leżą na niezmierzonym miejscu.
 - **Maks. jerk X/Y = `square_corner_velocity` z printer.cfg** (tu 8).
 

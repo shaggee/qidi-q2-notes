@@ -10,6 +10,7 @@
 - INSTALL.md with verified/proposed status, backups and undo; PETG override and layer-change retraction notes; Fluidd tips; skip-flush marked untested.
 - tools/skip_flush: automatic install of the same-slot flush skip.
 - Troubleshooting: plate scuff from QIDI's stock purge lines (`Z-0.1`).
+- KAMP mesh margin: real file `config/KAMP/KAMP_settings.cfg` (root-owned, Fluidd save error), SSH fix; margin was 1.
 
 ---
 
@@ -25,3 +26,4 @@
 - INSTALL.md ze statusem sprawdzone/propozycja, kopiami i cofaniem; uwagi o nadpisaniach PETG i retrakcji przy zmianie warstwy; wskazówki Fluidd; pomijanie płukania oznaczone jako niesprawdzone.
 - tools/skip_flush: automatyczne wgrywanie pomijania płukania przy tym samym slocie.
 - Błędy: otarcie płyty przez fabryczne linie płukania QIDI (`Z-0.1`).
+- Margines siatki KAMP: właściwy plik `config/KAMP/KAMP_settings.cfg` (należy do root, błąd zapisu we Fluidd), zmiana przez SSH; było 1.
