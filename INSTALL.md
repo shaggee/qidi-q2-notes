@@ -12,7 +12,7 @@ author's printer:
 |---|---|---|---|
 | Per-filament Z offset (Orca) | ✅ | easy | [1](#1-orcaslicer-changes) |
 | Orca profile settings | ✅ | easy | [1](#1-orcaslicer-changes) |
-| Purge line in front of the model (Orca) | 🟡 | easy | [1](#1-orcaslicer-changes) |
+| Purge line in front of the model (Orca) | ✅ | easy | [1](#1-orcaslicer-changes) |
 | KAMP mesh margin 10 mm | ✅ | easy (SSH) | [docs/bed-leveling.md](docs/bed-leveling.md#kamp-mesh-margin) |
 | `z_tilt` tolerance | ✅ | easy | [3](#3-printercfg-changes) |
 | `screws_tilt_adjust` | ✅ | easy | [3](#3-printercfg-changes) |
@@ -108,7 +108,7 @@ potwierdzone na drukarce autora:
 |---|---|---|---|
 | Offset Z dla każdego filamentu (Orca) | ✅ | łatwa | 1 |
 | Ustawienia profilu Orca | ✅ | łatwa | 1 |
-| Linia płukania przed modelem (Orca) | 🟡 | łatwa | 1 |
+| Linia płukania przed modelem (Orca) | ✅ | łatwa | 1 |
 | Margines siatki KAMP 10 mm | ✅ | łatwa (SSH) | [docs/bed-leveling.md](docs/bed-leveling.md) |
 | Tolerancja `z_tilt` | ✅ | łatwa | 3 |
 | `screws_tilt_adjust` | ✅ | łatwa | 3 |

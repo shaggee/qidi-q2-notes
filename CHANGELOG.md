@@ -11,6 +11,7 @@
 - tools/skip_flush: automatic install of the same-slot flush skip.
 - Troubleshooting: plate scuff from QIDI's stock purge lines (`Z-0.1`).
 - KAMP mesh margin: real file `config/KAMP/KAMP_settings.cfg` (root-owned, Fluidd save error), SSH fix; margin was 1.
+- Purge line in front of the model verified on the printer.
 
 ---
 
@@ -27,3 +28,4 @@
 - tools/skip_flush: automatyczne wgrywanie pomijania płukania przy tym samym slocie.
 - Błędy: otarcie płyty przez fabryczne linie płukania QIDI (`Z-0.1`).
 - Margines siatki KAMP: właściwy plik `config/KAMP/KAMP_settings.cfg` (należy do root, błąd zapisu we Fluidd), zmiana przez SSH; było 1.
+- Linia płukania przed modelem sprawdzona na drukarce.

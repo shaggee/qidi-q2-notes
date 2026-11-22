@@ -1,6 +1,7 @@
 ; OrcaSlicer -> Printer settings -> Machine G-code -> Machine start G-code
 ; Replaces QIDI's two fixed purge lines (after "G4 P3000") with a line 5 mm in front of the model,
 ; inside the adaptive mesh area (KAMP/KAMP_settings.cfg: variable_mesh_margin: 10).
+; Status: verified on the author's Q2 (2026-11-22). / PL: sprawdzone na Q2 autora.
 ; --- purge line 5 mm in front of the model ---
 ; PL: OrcaSlicer -> Ustawienia drukarki -> G-code maszyny -> Początkowy G-code. Zastępuje dwie stałe linie
 ; płukania QIDI (po "G4 P3000") linią 5 mm przed modelem, w obszarze siatki (KAMP/KAMP_settings.cfg: variable_mesh_margin: 10).
