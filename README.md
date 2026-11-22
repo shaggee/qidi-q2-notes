@@ -18,6 +18,10 @@ on a single printer with **already customised macros**, so read before copying.
 | Slicer | OrcaSlicer 2.5.0 / 2.6.0-dev nightly |
 | Filaments | SUNLU PETG, generic / Tecbears PLA (matte), cool plate |
 
+## Start here
+
+**[INSTALL.md](INSTALL.md)** – what to apply, in which order, how to back up and undo, and which changes are verified on the printer.
+
 ## What is here
 
 | Folder / file | Content |
@@ -71,6 +75,10 @@ z **już zmienionymi makrami**, więc przeczytaj przed skopiowaniem.
 | MCU główne | 02.01.01.09 |
 | Slicer | OrcaSlicer 2.5.0 / 2.6.0-dev (nightly) |
 | Filamenty | SUNLU PETG, PLA (w tym matowe Tecbears), płyta cool plate |
+
+## Od czego zacząć
+
+**[INSTALL.md](INSTALL.md)** – co wgrać, w jakiej kolejności, jak zrobić kopię i cofnąć zmiany oraz które zmiany są sprawdzone na drukarce.
 
 ## Zawartość
 

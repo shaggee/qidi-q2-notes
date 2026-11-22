@@ -7,6 +7,7 @@
 - Orca: purge line in front of the model, per-filament Z offset.
 - Tools: q2_tweaks, box_trace.
 - All documents bilingual: English first, Polish below.
+- INSTALL.md with verified/proposed status, backups and undo; PETG override and layer-change retraction notes; Fluidd tips; skip-flush marked untested.
 
 ---
 
@@ -19,3 +20,4 @@
 - Orca: linia płukania przed modelem, offset Z dla każdego filamentu.
 - Narzędzia: q2_tweaks, box_trace.
 - Wszystkie dokumenty dwujęzyczne: najpierw angielski, pod spodem polski.
+- INSTALL.md ze statusem sprawdzone/propozycja, kopiami i cofaniem; uwagi o nadpisaniach PETG i retrakcji przy zmianie warstwy; wskazówki Fluidd; pomijanie płukania oznaczone jako niesprawdzone.

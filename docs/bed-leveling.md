@@ -61,6 +61,12 @@ print start then scrubs the nozzle at Z−0.2/−1.5 on a tilted bed **before** 
 with `No trigger on probe after full movement`. See [../macros/m84-keep-z.cfg](../macros/m84-keep-z.cfg).
 If it already happened: power-cycle (PRINTER_INIT enables Z), `G28`, `Z_TILT_ADJUST`.
 
+## Fluidd
+- *Settings → Tool → Invert Z control*: **off**, otherwise the Z arrows move the bed the wrong way.
+- *Settings → General / Dashboard*: enable the **Bed mesh** card to see the mesh (3D or flat view,
+  "Flat surface" off to see the real shape, scale e.g. ±0.3 mm).
+- Mesh range up to ~0.3 mm on this plate is fine; the mesh compensates it.
+
 ---
 
 # Polski
@@ -91,3 +97,8 @@ Gdy `M84` wyłącza `stepper_z`/`stepper_z1`, dwie śruby mogą się przekręci�
 wydruku czyści dyszę na Z−0.2/−1.5 na przechylonym stole **przed** `Z_TILT_ADJUST`, a z_tilt kończy się błędem
 `No trigger on probe after full movement`. Rozwiązanie: [../macros/m84-keep-z.cfg](../macros/m84-keep-z.cfg).
 Jeśli już się stało: wyłącz i włącz drukarkę (PRINTER_INIT włącza Z), `G28`, `Z_TILT_ADJUST`.
+
+### Fluidd
+- *Settings → Tool → Invert Z control*: **wył.**, inaczej strzałki Z ruszają stołem w złą stronę.
+- *Settings → General / Dashboard*: włącz kartę **Bed mesh**, żeby widzieć siatkę (widok 3D lub płaski).
+- Zakres siatki do ~0.3 mm na tej płycie jest OK; siatka to kompensuje.

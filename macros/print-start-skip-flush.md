@@ -1,5 +1,7 @@
 # PRINT_START: skip the Box flush when the slot did not change
 
+> **Untested** – proposed, not yet confirmed on a printer. Feedback welcome.
+
 **EN** · [PL – wersja polska niżej](#polski)
 
 Stock `PRINT_START` runs `EXTRUSION_AND_FLUSH` (~75 s) on every print. If the slot needed by the print is
@@ -30,7 +32,7 @@ backup first. Line names differ slightly between firmware versions – find the 
    {% set box_flushed = printer.save_variables.variables.box_count >= 1 and printer["box_extras"] and printer.save_variables.variables.enable_box == 1 and not same_slot %}
    ```
 
-Status: the logic is simple, but check the first prints (console shows `Same slot slotN - skipping flush`).
+**Status: not yet verified on the printer.** The logic is simple, but check the first prints (console shows `Same slot slotN - skipping flush`).
 Old filament residue in the nozzle is then purged only by the purge line – fine for the same spool, do a
 manual flush after a long break with wet PETG.
 
@@ -40,6 +42,8 @@ manual flush after a long break with wet PETG.
 
 ## PRINT_START: pomiń płukanie Boxa, gdy slot się nie zmienił
 
+> **Niesprawdzone** – propozycja, jeszcze nie potwierdzona na drukarce. Uwagi mile widziane.
+
 Fabryczny `PRINT_START` wykonuje `EXTRUSION_AND_FLUSH` (~75 s) przy każdym wydruku. Jeśli potrzebny slot jest już
 załadowany (`last_load_slot` w `saved_variables`), płukanie nic nie daje.
 
@@ -48,5 +52,5 @@ Edytuj `PRINT_START` w pliku makr QIDI (zrób kopię). Nazwy linii mogą się tr
 2. Zamień płukanie po `BOX_PRINT_START` na blok `{% if same_slot %}` (wyżej).
 3. Jeśli makro dalej liczy `box_flushed`, dopisz do niego `and not same_slot`.
 
-Sprawdź pierwsze wydruki (konsola pokaże `Same slot slotN - skipping flush`). Resztki w dyszy usuwa wtedy tylko
+**Status: jeszcze niesprawdzone na drukarce.** Sprawdź pierwsze wydruki (konsola pokaże `Same slot slotN - skipping flush`). Resztki w dyszy usuwa wtedy tylko
 linia płukania – przy tej samej szpuli to wystarcza; po długiej przerwie z wilgotnym PETG przepłucz ręcznie.

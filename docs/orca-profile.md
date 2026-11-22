@@ -106,6 +106,15 @@ Accelerations after the accelerometer fix and a new input shaper calibration
 | Fan max | 40%, overhangs/bridges 90% |
 | Min print speed | 20 mm/s |
 
+## Check the filament overrides (PETG)
+QIDI's / downloaded PETG profiles can carry their own values in *Filament → Setting Overrides*. Here
+`Wipe while retracting` was overridden to **off** (`filament_wipe = 0`), so wipe and *Wipe inward* from the
+process never worked with PETG. Untick the overrides you do not need: only the ticked ones replace the
+printer/process values. Keep only *Retraction length* (0.4 mm) ticked if it differs from the printer value.
+
+*Retract on layer change*: **off**. With Z-hop and wipe it only adds a retraction at every layer
+(more oozing pauses on PETG, no visible gain).
+
 ## Matte PLA note
 
 Matte PLA changes sheen with speed: slower spots look glossier. Keep the outer wall speed even (small
@@ -189,6 +198,15 @@ części podnoszą rogi). Przepływ, PA, maks. przepływ i retrakcja z kalibracj
 SUNLU PETG: dysza 250/245 °C, stół 65/60 °C na cool plate (płyta 50–70 °C), klej w sztyfcie jako separator,
 przepływ 0.93, PA 0.07, maks. przepływ 12–13 mm³/s, retrakcja 0.4 mm, wentylator maks. 40%, nawisy/mosty 90%,
 min. prędkość 20 mm/s.
+
+### Sprawdź nadpisania filamentu (PETG)
+Profile PETG od QIDI / pobrane mogą mieć własne wartości w *Filament → Nadpisania ustawień*. Tu
+*Wycieranie podczas retrakcji* było nadpisane na **wył.** (`filament_wipe = 0`), więc wycieranie i
+*Wycieranie do wewnątrz* z procesu nigdy nie działały z PETG. Odznacz niepotrzebne nadpisania: tylko zaznaczone
+zastępują wartości drukarki/procesu. Zostaw zaznaczoną tylko *Długość retrakcji* (0.4 mm), jeśli różni się od drukarki.
+
+*Retrakcja przy zmianie warstwy*: **wył.** Przy Z-hop i wycieraniu dodaje tylko retrakcję na każdej warstwie
+(więcej postojów z wyciekiem na PETG, bez widocznego zysku).
 
 ### PLA matowe
 Matowe PLA zmienia połysk z prędkością: wolniejsze miejsca są bardziej błyszczące. Przy błyszczących plamach na
