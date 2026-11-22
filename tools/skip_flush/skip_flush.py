@@ -67,6 +67,10 @@ def main():
         print("Nothing changed / nic nie zmieniono"); return 1
     if cmd != "apply":
         print("Ready, run: python3 skip_flush.py apply / gotowe, uruchom apply"); return 0
+    if not os.access(path, os.W_OK):
+        print("No write permission / brak prawa zapisu. Run / uruchom:")
+        print(f"  sudo HOME={os.path.expanduser('~')} python3 {os.path.abspath(__file__)} apply")
+        return 1
     for _, old, new in EDITS:
         text = text.replace(old, new)
     bak = path + ".skipflush-" + time.strftime("%Y%m%d-%H%M%S")

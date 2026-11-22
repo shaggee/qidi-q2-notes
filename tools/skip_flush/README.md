@@ -19,6 +19,8 @@ curl -sSLO https://raw.githubusercontent.com/shaggee/qidi-q2-notes/main/tools/sk
 python3 skip_flush.py check
 python3 skip_flush.py apply
 ```
+If the file is not writable for your user, the script stops and prints
+`sudo HOME=/home/mks python3 /tmp/skip_flush.py apply` (download to `/tmp` if your home folder is read-only).
 Then `FIRMWARE_RESTART` in Fluidd. Undo: `python3 skip_flush.py restore` + `FIRMWARE_RESTART`.
 
 Check first that `saved_variables.cfg` stores slots in the same form, e.g. `last_load_slot = 'slot2'` and
@@ -43,6 +45,8 @@ Napisane pod plik makr „Superuser Macros: Just Faster Box”; przy innych makr
 wtedy skrypt niczego nie zmienia.
 
 Użycie (drukarka bezczynna): polecenia wyżej (`curl`, `check`, `apply`), potem `FIRMWARE_RESTART` we Fluidd.
+Gdy plik nie jest zapisywalny dla Twojego użytkownika, skrypt się zatrzyma i podpowie
+`sudo HOME=/home/mks python3 /tmp/skip_flush.py apply` (pobierz do `/tmp`, jeśli folder domowy jest tylko do odczytu).
 Cofnięcie: `python3 skip_flush.py restore` + `FIRMWARE_RESTART`.
 
 Najpierw sprawdź, czy `saved_variables.cfg` zapisuje sloty tak samo, np. `last_load_slot = 'slot2'` i
