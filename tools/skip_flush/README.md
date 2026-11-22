@@ -6,8 +6,8 @@ Applies [macros/print-start-skip-flush.md](../../macros/print-start-skip-flush.m
 the print needs (`value_tN`) is the one already loaded (`last_load_slot`), `PRINT_START` skips
 `EXTRUSION_AND_FLUSH` (~75 s) and `CLEAR_NOZZLE` does its short purge instead (`PURGE=1`).
 
-Status: 🟡 tested on a copy of the author's macro file (both branches rendered with Klipper's Jinja
-delimiters, LF and CRLF, restore). Not yet confirmed on a running print.
+Status: ✅ verified on the author's Q2 (2026-11-22): `Same slot slot2 - skipping flush` in the console,
+nozzle cleaning right after. Also tested on a copy of the macro file (both branches, LF and CRLF, restore).
 
 Written for the "Superuser Macros: Just Faster Box" macro file; on other macro files the anchors may not
 match – the script then changes nothing.
@@ -38,8 +38,8 @@ Wgrywa automatycznie zmianę z [macros/print-start-skip-flush.md](../../macros/p
 slot potrzebny do wydruku (`value_tN`) jest już załadowany (`last_load_slot`), `PRINT_START` pomija
 `EXTRUSION_AND_FLUSH` (~75 s), a `CLEAR_NOZZLE` robi zamiast tego krótkie płukanie (`PURGE=1`).
 
-Status: 🟡 sprawdzone na kopii pliku makr autora (obie gałęzie, LF i CRLF, przywracanie). Jeszcze niepotwierdzone
-na prawdziwym wydruku.
+Status: ✅ sprawdzone na Q2 autora (2026-11-22): `Same slot slot2 - skipping flush` w konsoli, zaraz po tym
+czyszczenie dyszy. Testowane też na kopii pliku makr (obie gałęzie, LF i CRLF, przywracanie).
 
 Napisane pod plik makr „Superuser Macros: Just Faster Box”; przy innych makrach miejsca mogą się nie zgadzać –
 wtedy skrypt niczego nie zmienia.
