@@ -41,7 +41,7 @@ restart – a launcher and a watchdog start first).
 
 ## Polish translation
 
-A full Polish translation (`pl.yml`, all 6235 strings) is in [`helixscreen-pl/`](../helixscreen-pl/). It is being submitted upstream as a pull request to prestonbrown/helixscreen ([PR text](../helixscreen-pl/PR.md)). Polish shows up in the language list only after the author adds it to the code.
+A full Polish translation (`pl.yml`, all 6235 strings) is in [`helixscreen-pl/`](../helixscreen-pl/). Submitted upstream as [prestonbrown/helixscreen#2162](https://github.com/prestonbrown/helixscreen/pull/2162) ([PR text](../helixscreen-pl/PR.md)). Polish shows up in the language list only after the author adds it to the code.
 
 ---
 
@@ -71,4 +71,4 @@ sprawdzone na Q2 autora.
 
 ## Polskie tłumaczenie
 
-Pełne polskie tłumaczenie (`pl.yml`, wszystkie 6235 tekstów) jest w [`helixscreen-pl/`](../helixscreen-pl/). Zgłaszamy je autorowi jako pull request do prestonbrown/helixscreen ([treść PR](../helixscreen-pl/PR.md)). Polski pojawi się na liście języków dopiero, gdy autor doda go w kodzie.
+Pełne polskie tłumaczenie (`pl.yml`, wszystkie 6235 tekstów) jest w [`helixscreen-pl/`](../helixscreen-pl/). Zgłoszone autorowi jako [prestonbrown/helixscreen#2162](https://github.com/prestonbrown/helixscreen/pull/2162) ([treść PR](../helixscreen-pl/PR.md)). Polski pojawi się na liście języków dopiero, gdy autor doda go w kodzie.
