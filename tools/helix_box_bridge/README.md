@@ -12,8 +12,10 @@ The Box ignores those, so after an edit in HelixScreen, Fluidd shows every slot 
 ## What the module does
 It catches numeric `SAVE_VARIABLE` writes to `filament_slotN`, `color_slotN` and `vendor_slotN`.
 It looks up the ids in `officiall_filas_list.cfg` and sends one `UPDATE_FILAMENT_INFORMATION` per slot.
+- The vendor + filament pair is matched to the printer's filament base (`/home/qidi/QIDI_Client/resource/filament_config/filament-0.4.json`). The Box silently ignores pairs it does not know (e.g. Tecbears + ABS Rapido).
+- "Generic ABS" in HelixScreen becomes `VENDOR='Generic' FILAMENT='ABS'`.
+- A colour-only edit (same material type, no brand picked) keeps the slot's brand and product, e.g. Tecbears PLA.
 - Fields HelixScreen did not send keep the Box's current value.
-- A Generic (0) vendor keeps the current brand, so brands added to the printer's filament base survive.
 - All other `SAVE_VARIABLE` calls run unchanged.
 
 The module does not fix how HelixScreen *displays* slots saved by QIDI's UI (grey "--"). That needs a HelixScreen fix.
@@ -48,8 +50,10 @@ Box je ignoruje, więc po zmianie w HelixScreen Fluidd pokazuje każdy slot jako
 ## Co robi moduł
 Przechwytuje numeryczne zapisy `SAVE_VARIABLE` do `filament_slotN`, `color_slotN` i `vendor_slotN`.
 Zamienia numery na nazwy według `officiall_filas_list.cfg` i wysyła jedno `UPDATE_FILAMENT_INFORMATION` na slot.
+- Para producent + filament jest dopasowywana do bazy filamentów drukarki (`/home/qidi/QIDI_Client/resource/filament_config/filament-0.4.json`). Box po cichu ignoruje pary, których nie zna (np. Tecbears + ABS Rapido).
+- „Generic ABS” w HelixScreen zamienia się na `VENDOR='Generic' FILAMENT='ABS'`.
+- Zmiana samego koloru (ten sam typ materiału, bez wyboru marki) zostawia markę i produkt ze slotu, np. Tecbears PLA.
 - Pola, których HelixScreen nie wysłał, zachowują obecną wartość z Boxa.
-- Producent Generic (0) zostawia obecną markę, więc marki dodane do bazy filamentów drukarki zostają.
 - Pozostałe wywołania `SAVE_VARIABLE` działają bez zmian.
 
 Moduł nie naprawia *wyświetlania* w HelixScreen slotów zapisanych przez interfejs QIDI (szare „--”). To wymaga poprawki w HelixScreen.

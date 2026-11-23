@@ -18,6 +18,7 @@
 # Remove:  delete the [helix_box_bridge] section, RESTART.
 
 import configparser
+import json
 import logging
 import os
 import re
@@ -36,6 +37,9 @@ class HelixBoxBridge:
             os.path.expanduser('~/printer_data/config')
         self.filas_path = config.get(
             'filas_list', os.path.join(cfg_dir, 'officiall_filas_list.cfg'))
+        self.filament_db = config.get(
+            'filament_db',
+            '/home/qidi/QIDI_Client/resource/filament_config/filament-0.4.json')
         self.delay = config.getfloat('delay', 0.3, minval=0.05)
         self.pending = {}
         self.timer = None
@@ -93,22 +97,56 @@ class HelixBoxBridge:
         fila, colors, vendors = tables
         cur = self._current(slot, eventtime)
         filament = cur.get('filament_str') or 'PLA Basic'
-        color = cur.get('color') or 'FAFAFA'
         vendor = cur.get('vendor_str') or 'QIDI'
-        if ids.get('filament', 0) > 0:
-            if ids['filament'] not in fila:
-                raise ValueError('fila%d not in %s' % (ids['filament'], self.filas_path))
-            filament = fila[ids['filament']]
+        color = cur.get('color') or 'FAFAFA'
         if ids.get('color', 0) > 0:
             if ids['color'] not in colors:
                 raise ValueError('colour %d not in [colordict]' % ids['color'])
             color = colors[ids['color']]
-        # Helix only knows the stock vendor list, so a Generic (0) write keeps the
-        # brand the Box already has (e.g. one added to the printer's filament base).
-        if ids.get('vendor', 0) > 0 and ids['vendor'] in vendors:
-            vendor = vendors[ids['vendor']]
+        if ids.get('filament', 0) > 0:
+            if ids['filament'] not in fila:
+                raise ValueError('fila%d not in %s' % (ids['filament'], self.filas_path))
+            name, ftype = fila[ids['filament']]
+            vid = ids.get('vendor', 0)
+            want_vendor = vendors.get(vid, 'Generic')
+            if vid == 0 and ftype and ftype == cur.get('filament_type'):
+                # Same material type and no brand picked: Helix re-sent the slot
+                # (e.g. a colour-only edit), so keep the brand and product the Box has.
+                pass
+            else:
+                vendor, filament = self._pick(want_vendor, name, ftype)
         return ("UPDATE_FILAMENT_INFORMATION SLOT=%d COLOR='%s' VENDOR='%s' FILAMENT='%s'"
                 % (slot, color, vendor, filament))
+
+    def _pick(self, vendor, name, ftype):
+        """Return a (vendor, filament) pair that exists in the printer's filament base."""
+        pairs = self._load_db()
+        if not pairs:
+            return vendor, name
+        for v, f in ((vendor, name), (vendor, ftype), ('QIDI', name),
+                     ('Generic', ftype)):
+            if f and (v, f) in pairs:
+                return v, f
+        for (v, f), t in sorted(pairs.items()):
+            if v == vendor and t == ftype:
+                return v, f
+        raise ValueError('no %s / %s (%s) in %s' % (vendor, name, ftype, self.filament_db))
+
+    def _load_db(self):
+        try:
+            with open(self.filament_db, encoding='utf-8') as fh:
+                data = json.load(fh)
+        except Exception as e:
+            logging.info('helix_box_bridge: filament base not read: %s', e)
+            return {}
+        pairs = {}
+        for key, entry in data.items():
+            if not isinstance(entry, dict):
+                continue
+            v = str(entry.get('filament_vendor') or '').strip()
+            if v and key.startswith(v + ' '):
+                pairs[(v, key[len(v) + 1:].strip())] = str(entry.get('type') or '')
+        return pairs
 
     def _current(self, slot, eventtime):
         out = {}
@@ -117,7 +155,7 @@ class HelixBoxBridge:
             return out
         box = mcc.get_status(eventtime).get('box', {})
         prefix = 'box%d_filament_info_%d_' % (slot // SLOTS_PER_BOX, slot % SLOTS_PER_BOX)
-        for key in ('filament_str', 'vendor_str'):
+        for key in ('filament_str', 'vendor_str', 'filament_type'):
             v = box.get(prefix + key)
             if isinstance(v, str) and v:
                 out[key] = v
@@ -137,7 +175,7 @@ class HelixBoxBridge:
             if sec.startswith('fila') and sec[4:].isdigit():
                 name = cp.get(sec, 'filament', fallback='').strip()
                 if name:
-                    fila[int(sec[4:])] = name
+                    fila[int(sec[4:])] = (name, cp.get(sec, 'type', fallback='').strip())
         if cp.has_section('colordict'):
             for k, v in cp.items('colordict'):
                 if k.strip().isdigit() and v.strip():
