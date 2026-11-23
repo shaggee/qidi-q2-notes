@@ -39,6 +39,10 @@ picture and [tools/screen_view](../tools/screen_view) shows that old image. Opti
 Check which one runs: `sudo ls -l /proc/$(pgrep -x helix-screen)/fd | grep -E "fb0|dri"` (wait ~15 s after a
 restart – a launcher and a watchdog start first).
 
+## Polish translation
+
+A full Polish translation (`pl.yml`, all 6235 strings) is in [`helixscreen-pl/`](../helixscreen-pl/). It is being submitted upstream as a pull request to prestonbrown/helixscreen ([PR text](../helixscreen-pl/PR.md)). Polish shows up in the language list only after the author adds it to the code.
+
 ---
 
 # Polski
@@ -64,3 +68,7 @@ QIDI i `screen_view` pokazuje stary ekran. Najlepiej włączyć wbudowane udost�
 Screen Sharing*) – kamera „HelixScreen Screen” we Fluidd, działa z DRM i da się klikać; potem usuń `screen_view`.
 Albo wymuś framebuffer: w `helixscreen.env` odkomentuj `HELIX_DISPLAY_BACKEND=fbdev` i zrestartuj HelixScreen –
 sprawdzone na Q2 autora.
+
+## Polskie tłumaczenie
+
+Pełne polskie tłumaczenie (`pl.yml`, wszystkie 6235 tekstów) jest w [`helixscreen-pl/`](../helixscreen-pl/). Zgłaszamy je autorowi jako pull request do prestonbrown/helixscreen ([treść PR](../helixscreen-pl/PR.md)). Polski pojawi się na liście języków dopiero, gdy autor doda go w kodzie.
