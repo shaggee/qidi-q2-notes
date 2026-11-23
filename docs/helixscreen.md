@@ -7,8 +7,26 @@ officially supports the QIDI Q2 on the printer's own screen: native 480×272 lay
 load/unload, drying), power-loss recovery, print-start step tracking, Wi-Fi setup, calibrations. It replaces QIDI's
 screen program (`qidi-client`) while installed. It supersedes the [qbdisplay_q2](../tools/qbdisplay_q2) prototype.
 
-Status on the author's Q2: 🟡 installed (v1.0.11, 2026-11-23), Box detected; touch calibration and Box
-load/unload not yet tested.
+Status on the author's Q2: ✅ v1.1.0-rc.3 working (2026-11-23): touch calibration done, Box slots show the
+material and colour set in Fluidd. Box load/unload from the screen not yet tested.
+
+**Use HelixScreen 1.1 or newer with the QIDI Box.** On 1.0.11 (stable) slots saved in the Box's new format
+(`filament_slot0 = 'QFL81'`, `color_slot0 = ['060606']`) show as grey "--". 1.1 reads them. The stable
+in-app updater does not offer 1.1 yet, so install it over SSH (settings are kept):
+```bash
+curl -sSL https://releases.helixscreen.org/install.sh -o /tmp/helix-install.sh
+sudo sh /tmp/helix-install.sh --version v1.1.0-rc.3 --dry-run   # check the plan
+sudo sh /tmp/helix-install.sh --version v1.1.0-rc.3
+```
+Then set **Settings > Updates > Update Channel > Beta**.
+
+**Slot edits from HelixScreen:** it still saves numeric ids, which the Box firmware ignores, so Fluidd
+showed "PLA Basic #FAFAFA". Install [helix_box_bridge](../tools/helix_box_bridge) to forward them as
+`UPDATE_FILAMENT_INFORMATION`. Brands outside QIDI/Generic (e.g. eSun, Tecbears) can only be set in Fluidd.
+
+**Tool mapping (T0–T3 labels):** these come from `value_t0..3` in `saved_variables.cfg`, set by the last
+print's filament mapping. Back to 1:1 from the Fluidd console:
+`SAVE_VARIABLE VARIABLE=value_t0 VALUE='"slot0"'` (and t1→slot1, t2→slot2, t3→slot3).
 
 ## Install (printer idle)
 ```
@@ -55,8 +73,27 @@ który oficjalnie obsługuje QIDI Q2 na ekranie drukarki: układy pod 480×272, 
 kalibracje. Na czas instalacji zastępuje program ekranu QIDI (`qidi-client`). Zastępuje prototyp
 [qbdisplay_q2](../tools/qbdisplay_q2). Brak języka polskiego (9 języków).
 
-Status na Q2 autora: 🟡 zainstalowany (v1.0.11, 2026-11-23), Box wykryty; kalibracja dotyku i
-ładowanie/rozładowanie Boxa jeszcze niesprawdzone.
+Status na Q2 autora: ✅ v1.1.0-rc.3 działa (2026-11-23): kalibracja dotyku zrobiona, sloty Boxa pokazują
+materiał i kolor ustawione we Fluidd. Ładowanie/rozładowanie Boxa z ekranu jeszcze niesprawdzone.
+
+**Z QIDI Boxem używaj HelixScreen 1.1 lub nowszego.** W 1.0.11 (stabilnej) sloty zapisane w nowym formacie
+Boxa (`filament_slot0 = 'QFL81'`, `color_slot0 = ['060606']`) są szare z „--”. Wersja 1.1 je odczytuje.
+Aktualizacja w aplikacji na kanale stabilnym jeszcze jej nie proponuje, więc zainstaluj ją przez SSH
+(ustawienia zostają):
+```bash
+curl -sSL https://releases.helixscreen.org/install.sh -o /tmp/helix-install.sh
+sudo sh /tmp/helix-install.sh --version v1.1.0-rc.3 --dry-run   # sprawdź plan
+sudo sh /tmp/helix-install.sh --version v1.1.0-rc.3
+```
+Potem ustaw **Ustawienia > Aktualizacje > Update Channel > Beta**.
+
+**Zmiana slotów w HelixScreen:** nadal zapisuje numery, które firmware Boxa ignoruje, więc Fluidd pokazywał
+„PLA Basic #FAFAFA”. Zainstaluj [helix_box_bridge](../tools/helix_box_bridge), który przekazuje je jako
+`UPDATE_FILAMENT_INFORMATION`. Marki spoza QIDI/Generic (np. eSun, Tecbears) ustawisz tylko we Fluidd.
+
+**Przypisanie narzędzi (etykiety T0–T3):** pochodzi z `value_t0..3` w `saved_variables.cfg` i ustawia je
+mapowanie filamentów ostatniego wydruku. Powrót do 1:1 z konsoli Fluidd:
+`SAVE_VARIABLE VARIABLE=value_t0 VALUE='"slot0"'` (oraz t1→slot1, t2→slot2, t3→slot3).
 
 Instalacja, deinstalacja i ostrzeżenia instalatora – polecenia i opis wyżej. Najważniejsze:
 - przyciski Wyłącz/Restart na ekranie mogą nie działać (brak reguły polkit);

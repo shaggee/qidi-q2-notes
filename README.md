@@ -42,6 +42,8 @@ on a single printer with **already customised macros**, so read before copying.
 | [`tools/hotend_fan`](tools/hotend_fan) | Hotend fan hysteresis and no false fan alarm on reheat (from qidi-q2-0204-tweaked; check / apply / restore) |
 | [`tools/screen_view`](tools/screen_view) | The printer's touch screen as a camera card in Fluidd (look only; service from qidi-q2-0204-tweaked) |
 | [`tools/random_zhome`](tools/random_zhome) | `PRINT_START` re-homes Z at a random point near the centre (less PEI wear; check / apply / restore) |
+| [`tools/helix_box_bridge`](tools/helix_box_bridge) | HelixScreen slot edits reach the QIDI Box (as `UPDATE_FILAMENT_INFORMATION`) |
+| [`tools/helix_box_bridge`](tools/helix_box_bridge) | Zmiany slotów z HelixScreen trafiają do QIDI Boxa (jako `UPDATE_FILAMENT_INFORMATION`) |
 | [`tools/qbdisplay_q2`](tools/qbdisplay_q2) | PROTOTYPE, superseded by [HelixScreen](docs/helixscreen.md): qbdisplay (new Plus4 display UI) on the Q2's 480×272 screen, nothing flashed |
 | [`tools/box_trace`](tools/box_trace) | Read-only Klipper module that logs the parameters the QIDI Box code reads, and the G-code it runs |
 

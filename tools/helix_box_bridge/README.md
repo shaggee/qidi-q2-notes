@@ -1,6 +1,6 @@
 # helix_box_bridge
 
-Status: 🟡 proposed, tested only against a simulated Klipper (not yet on the printer).
+Status: ✅ verified on the author's Q2 (2026-11-23): "Generic ABS, blue" from HelixScreen became `VENDOR='Generic' FILAMENT='ABS'` in the Box.
 
 ## Problem
 On Q2 firmware 1.1.x the QIDI Box (`multi_color_controller`) follows slot edits only when they arrive as
@@ -43,7 +43,7 @@ Delete the `[helix_box_bridge]` section, run `RESTART`, then `sudo rm ~/klipper/
 
 # Polski
 
-Status: 🟡 propozycja, przetestowana tylko na symulowanym Klipperze (jeszcze nie na drukarce).
+Status: ✅ sprawdzone na Q2 autora (2026-11-23): „Generic ABS, niebieski” z HelixScreen trafiło do Boxa jako `VENDOR='Generic' FILAMENT='ABS'`.
 
 ## Problem
 W firmware Q2 1.1.x QIDI Box (`multi_color_controller`) przyjmuje zmianę slotu tylko jako
