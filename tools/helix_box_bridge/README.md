@@ -25,11 +25,16 @@ The module does not fix how HelixScreen *displays* slots saved by QIDI's UI (gre
 sudo curl -fsSL https://raw.githubusercontent.com/shaggee/qidi-q2-notes/main/tools/helix_box_bridge/helix_box_bridge.py \
   -o ~/klipper/klippy/extras/helix_box_bridge.py
 ```
-Add this section to `printer.cfg`, then run `RESTART`:
+Add this section to `printer.cfg`, then restart the Klipper service (`RESTART` alone keeps the old module code loaded):
 ```
 [helix_box_bridge]
 ```
-Check: `grep helix_box_bridge ~/printer_data/logs/klippy.log` should show `active`. After an edit in HelixScreen it shows `-> UPDATE_FILAMENT_INFORMATION ...`.
+```bash
+sudo systemctl restart klipper
+```
+After updating the .py file, also use `sudo systemctl restart klipper`.
+
+Check: `grep helix_box_bridge ~/printer_data/logs/klippy.log` should show `v2: active`. After an edit in HelixScreen it shows `-> UPDATE_FILAMENT_INFORMATION ...`.
 
 ## Remove
 Delete the `[helix_box_bridge]` section, run `RESTART`, then `sudo rm ~/klipper/klippy/extras/helix_box_bridge.py`.
@@ -63,11 +68,16 @@ Moduł nie naprawia *wyświetlania* w HelixScreen slotów zapisanych przez inter
 sudo curl -fsSL https://raw.githubusercontent.com/shaggee/qidi-q2-notes/main/tools/helix_box_bridge/helix_box_bridge.py \
   -o ~/klipper/klippy/extras/helix_box_bridge.py
 ```
-Dodaj tę sekcję do `printer.cfg`, potem uruchom `RESTART`:
+Dodaj tę sekcję do `printer.cfg`, potem zrestartuj usługę Klippera (samo `RESTART` zostawia w pamięci stary kod modułu):
 ```
 [helix_box_bridge]
 ```
-Sprawdzenie: `grep helix_box_bridge ~/printer_data/logs/klippy.log` powinno pokazać `active`. Po zmianie w HelixScreen pojawi się `-> UPDATE_FILAMENT_INFORMATION ...`.
+```bash
+sudo systemctl restart klipper
+```
+Po aktualizacji pliku .py też użyj `sudo systemctl restart klipper`.
+
+Sprawdzenie: `grep helix_box_bridge ~/printer_data/logs/klippy.log` powinno pokazać `v2: active`. Po zmianie w HelixScreen pojawi się `-> UPDATE_FILAMENT_INFORMATION ...`.
 
 ## Usunięcie
 Usuń sekcję `[helix_box_bridge]`, uruchom `RESTART`, potem `sudo rm ~/klipper/klippy/extras/helix_box_bridge.py`.
