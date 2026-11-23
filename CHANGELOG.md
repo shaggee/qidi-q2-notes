@@ -21,6 +21,7 @@
 - helixscreen-pl: full Polish translation of HelixScreen (pl.yml) + upstream PR text.
 - tools/helix_box_bridge: HelixScreen slot edits sent to the Box as UPDATE_FILAMENT_INFORMATION (verified).
 - docs/helixscreen.md: HelixScreen 1.1 needed for QIDI Box slots in the new format; install over SSH; T0–T3 mapping reset.
+- QIDI cloud (MQTT) turned off: server.py change, troubleshooting entry.
 
 ---
 
@@ -47,3 +48,4 @@
 - helixscreen-pl: pełne polskie tłumaczenie HelixScreen (pl.yml) + treść PR do autora.
 - tools/helix_box_bridge: zmiany slotów z HelixScreen wysyłane do Boxa jako UPDATE_FILAMENT_INFORMATION (sprawdzone).
 - docs/helixscreen.md: HelixScreen 1.1 potrzebny dla slotów Boxa w nowym formacie; instalacja przez SSH; reset przypisania T0–T3.
+- Wyłączenie chmury QIDI (MQTT): zmiana w server.py, wpis w błędach.
