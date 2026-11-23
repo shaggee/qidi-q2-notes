@@ -19,6 +19,7 @@
 - tools/qbdisplay_q2: prototype port of qbdisplay (Plus4 UI) to the Q2 framebuffer + Goodix touch.
 - docs/helixscreen.md: HelixScreen recommended screen UI on the Q2; qbdisplay_q2 marked superseded.
 - helixscreen-pl: full Polish translation of HelixScreen (pl.yml) + upstream PR text.
+- tools/helix_box_bridge: HelixScreen slot edits sent to the Box as UPDATE_FILAMENT_INFORMATION (proposed).
 
 ---
 
@@ -43,3 +44,4 @@
 - tools/qbdisplay_q2: prototyp portu qbdisplay (interfejs Plus4) na framebuffer i dotyk Goodix w Q2.
 - docs/helixscreen.md: HelixScreen jako zalecany interfejs ekranu Q2; qbdisplay_q2 oznaczony jako zastąpiony.
 - helixscreen-pl: pełne polskie tłumaczenie HelixScreen (pl.yml) + treść PR do autora.
+- tools/helix_box_bridge: zmiany slotów z HelixScreen wysyłane do Boxa jako UPDATE_FILAMENT_INFORMATION (propozycja).
