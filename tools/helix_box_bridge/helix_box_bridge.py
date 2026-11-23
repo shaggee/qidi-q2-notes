@@ -56,7 +56,8 @@ class HelixBoxBridge:
             'SAVE_VARIABLE', self.cmd_SAVE_VARIABLE,
             desc='Save arbitrary variables to disk (helix_box_bridge: '
                  'numeric Box slot writes go to UPDATE_FILAMENT_INFORMATION)')
-        logging.info('helix_box_bridge: active, list %s', self.filas_path)
+        logging.info('helix_box_bridge v2: active, list %s, base %s',
+                     self.filas_path, self.filament_db)
 
     # ------------------------------------------------------------------
     def cmd_SAVE_VARIABLE(self, gcmd):
@@ -109,6 +110,8 @@ class HelixBoxBridge:
             name, ftype = fila[ids['filament']]
             vid = ids.get('vendor', 0)
             want_vendor = vendors.get(vid, 'Generic')
+            logging.info('helix_box_bridge: slot %d now %r, Helix wants %s / %s (%s)',
+                         slot, cur, want_vendor, name, ftype)
             if vid == 0 and ftype and ftype == cur.get('filament_type'):
                 # Same material type and no brand picked: Helix re-sent the slot
                 # (e.g. a colour-only edit), so keep the brand and product the Box has.
