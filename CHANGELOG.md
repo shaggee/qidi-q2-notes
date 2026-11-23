@@ -17,6 +17,7 @@
 - tools/random_zhome: random Z re-home point after Z_TILT_ADJUST in PRINT_START.
 - Troubleshooting: nozzle cleaning off the plate holes (fixed Y in CLEAR_NOZZLE).
 - tools/qbdisplay_q2: prototype port of qbdisplay (Plus4 UI) to the Q2 framebuffer + Goodix touch.
+- docs/helixscreen.md: HelixScreen recommended screen UI on the Q2; qbdisplay_q2 marked superseded.
 
 ---
 
@@ -39,3 +40,4 @@
 - tools/random_zhome: losowy punkt ponownego bazowania Z po Z_TILT_ADJUST w PRINT_START.
 - Błędy: czyszczenie dyszy obok otworów płyty (stałe Y w CLEAR_NOZZLE).
 - tools/qbdisplay_q2: prototyp portu qbdisplay (interfejs Plus4) na framebuffer i dotyk Goodix w Q2.
+- docs/helixscreen.md: HelixScreen jako zalecany interfejs ekranu Q2; qbdisplay_q2 oznaczony jako zastąpiony.

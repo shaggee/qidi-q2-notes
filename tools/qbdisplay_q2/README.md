@@ -2,6 +2,8 @@
 
 **EN** · [PL – wersja polska niżej](#polski)
 
+> **Superseded:** for the Q2 use [HelixScreen](../../docs/helixscreen.md) – native 480×272 UI with official Q2 and QIDI Box support. / **Zastąpione** przez HelixScreen.
+
 [qbdisplay](https://github.com/CharlyBrownFR/qbdisplay-plus4) by CharlyBrownFR (GPL-3.0) is a new UI for
 the QIDI Plus4 touch display. The Plus4 has a separate 800×480 TJC/Nextion display driven over a serial port;
 the Q2 has a plain 480×272 LCD (`/dev/fb0`) with a Goodix touch panel, drawn by QIDI's screen program

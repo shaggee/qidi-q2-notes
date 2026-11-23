@@ -33,6 +33,7 @@ on a single printer with **already customised macros**, so read before copying.
 | [`docs/qidi-box.md`](docs/qidi-box.md) | Box load/unload parameters read from QIDI's code (with the stock values), timings, a failed speed-up |
 | [`docs/toolhead-accelerometer.md`](docs/toolhead-accelerometer.md) | Accelerometer fix (383 → 1603 samples/s) done from a Linux host, with real outputs, and the new input shaper values |
 | [`docs/troubleshooting.md`](docs/troubleshooting.md) | Errors met on the way and what they meant |
+| [`docs/helixscreen.md`](docs/helixscreen.md) | **Recommended screen UI:** HelixScreen on the Q2 – install, installer warnings, DRM vs framebuffer, screen sharing |
 | [`docs/security-and-updates.md`](docs/security-and-updates.md) | ADB root shell off, blocking firmware updates |
 | [`macros/`](macros) | Macro changes as small, documented snippets (not whole QIDI files) |
 | [`orca/`](orca) | Start G-code (purge line in front of the model) and filament start G-code (Z offset) |
@@ -41,7 +42,7 @@ on a single printer with **already customised macros**, so read before copying.
 | [`tools/hotend_fan`](tools/hotend_fan) | Hotend fan hysteresis and no false fan alarm on reheat (from qidi-q2-0204-tweaked; check / apply / restore) |
 | [`tools/screen_view`](tools/screen_view) | The printer's touch screen as a camera card in Fluidd (look only; service from qidi-q2-0204-tweaked) |
 | [`tools/random_zhome`](tools/random_zhome) | `PRINT_START` re-homes Z at a random point near the centre (less PEI wear; check / apply / restore) |
-| [`tools/qbdisplay_q2`](tools/qbdisplay_q2) | PROTOTYPE: qbdisplay (new Plus4 display UI) on the Q2's 480×272 screen, nothing flashed |
+| [`tools/qbdisplay_q2`](tools/qbdisplay_q2) | PROTOTYPE, superseded by [HelixScreen](docs/helixscreen.md): qbdisplay (new Plus4 display UI) on the Q2's 480×272 screen, nothing flashed |
 | [`tools/box_trace`](tools/box_trace) | Read-only Klipper module that logs the parameters the QIDI Box code reads, and the G-code it runs |
 
 ## Credits
@@ -96,6 +97,7 @@ z **już zmienionymi makrami**, więc przeczytaj przed skopiowaniem.
 | [`docs/qidi-box.md`](docs/qidi-box.md) | Parametry ładowania/rozładowania Boxa odczytane z kodu QIDI (z wartościami fabrycznymi), czasy, nieudana próba przyspieszenia |
 | [`docs/toolhead-accelerometer.md`](docs/toolhead-accelerometer.md) | Naprawa akcelerometru (383 → 1603 próbek/s) z hosta Linux, z prawdziwymi wynikami, i nowe wartości Input Shapera |
 | [`docs/troubleshooting.md`](docs/troubleshooting.md) | Napotkane błędy i co znaczyły |
+| [`docs/helixscreen.md`](docs/helixscreen.md) | **Zalecany interfejs ekranu:** HelixScreen na Q2 – instalacja, ostrzeżenia, DRM czy framebuffer, udostępnianie ekranu |
 | [`docs/security-and-updates.md`](docs/security-and-updates.md) | Wyłączenie ADB (root bez hasła), blokada aktualizacji |
 | [`macros/`](macros) | Zmiany w makrach jako małe, opisane fragmenty (nie całe pliki QIDI) |
 | [`orca/`](orca) | Początkowy G-code (linia płukania przed modelem) i G-code filamentu (offset Z) |
@@ -104,7 +106,7 @@ z **już zmienionymi makrami**, więc przeczytaj przed skopiowaniem.
 | [`tools/hotend_fan`](tools/hotend_fan) | Histereza wentylatora hotendu, bez fałszywego alarmu przy ponownym grzaniu (z qidi-q2-0204-tweaked; check / apply / restore) |
 | [`tools/screen_view`](tools/screen_view) | Ekran dotykowy drukarki jako karta kamery we Fluidd (tylko podgląd; usługa z qidi-q2-0204-tweaked) |
 | [`tools/random_zhome`](tools/random_zhome) | `PRINT_START` bazuje Z w losowym punkcie przy środku (mniej zużycia PEI; check / apply / restore) |
-| [`tools/qbdisplay_q2`](tools/qbdisplay_q2) | PROTOTYP: qbdisplay (nowy interfejs ekranu z Plus4) na ekranie 480×272 Q2, bez wgrywania |
+| [`tools/qbdisplay_q2`](tools/qbdisplay_q2) | PROTOTYP, zastąpiony przez [HelixScreen](docs/helixscreen.md): qbdisplay (nowy interfejs ekranu z Plus4) na ekranie 480×272 Q2, bez wgrywania |
 | [`tools/box_trace`](tools/box_trace) | Moduł Klippera tylko do odczytu: zapisuje parametry czytane przez kod Boxa QIDI i wykonywany G-code |
 
 Każdy dokument ma najpierw wersję angielską, a pod nią polską.
