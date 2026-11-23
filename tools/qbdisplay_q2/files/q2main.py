@@ -28,6 +28,11 @@ from .app import App, subscribe_objects
 from .config import Config
 from .fbdisplay import FbDisplay
 from .moonraker import make_client
+from . import updates
+
+# Q2: look for QIDI Q2 firmware, not Plus4 (QIDI's version server path for the Q2 is unknown -> GitHub only)
+updates.QIDI_VERSION_URLS = ()
+updates.QIDI_GITHUB = 'QIDITECH/QIDI_Q2'
 
 log = logging.getLogger('qbdisplay')
 

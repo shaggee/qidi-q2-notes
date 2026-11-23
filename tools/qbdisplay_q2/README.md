@@ -14,7 +14,7 @@ the Q2 has a plain 480×272 LCD (`/dev/fb0`) with a Goodix touch panel, drawn by
 
 Preview at the Q2's real resolution (480×272):
 
-![home](preview-home.png) ![filament](preview-filament.png) ![move](preview-move.png)
+![home](preview-home.png) ![filament](preview-filament.png) ![print](preview-print.png) ![move](preview-move.png)
 
 **Nothing is flashed.** The service is not started at boot: after a reboot QIDI's screen is back. Starting it
 stops `qidi-client`; stopping it (or a crash) starts `qidi-client` again.
@@ -22,7 +22,7 @@ stops `qidi-client`; stopping it (or a crash) starts `qidi-client` again.
 While qbdisplay runs, QIDI's screen program is off: no AI camera pop-ups, no resume after power loss, no QIDI
 app/cloud, no plate calibration or updates from the screen, probably no automatic Box hot-plug handling.
 Printing, Klipper, Fluidd and macros are unaffected. Box commands come from the Plus4 2.1.1 profile and are
-**not verified on the Q2 yet**. "Check for updates" in qbdisplay looks for Plus4 firmware – ignore it.
+**not verified on the Q2 yet**. The printer name shows "Q2"; "Check for updates" looks for QIDI Q2 releases on GitHub (QIDITECH/QIDI_Q2); the "To QIDI" button on the display does not work here – use `stop`.
 
 Status: 🟡 tested in a simulator (render, framebuffer output, touch mapping, installer). Not yet on a printer.
 
@@ -65,7 +65,7 @@ Podgląd w prawdziwej rozdzielczości Q2 – obrazki wyżej.
 Gdy działa qbdisplay, program ekranu QIDI jest wyłączony: brak okienek kamery AI, wznawiania po zaniku prądu,
 aplikacji/chmury QIDI, kalibracji płyty i aktualizacji z ekranu, prawdopodobnie też automatycznej obsługi
 odłączenia Boxa. Druk, Klipper, Fluidd i makra działają normalnie. Polecenia Boxa pochodzą z profilu Plus4 2.1.1 i
-**nie są jeszcze sprawdzone na Q2**. „Sprawdzanie aktualizacji” w qbdisplay szuka firmware Plus4 – pomiń.
+**nie są jeszcze sprawdzone na Q2**. Nazwa drukarki to „Q2”; sprawdzanie aktualizacji szuka wydań QIDI Q2 na GitHubie (QIDITECH/QIDI_Q2); przycisk „To QIDI” na ekranie tu nie działa – użyj `stop`.
 
 Status: 🟡 sprawdzone w symulatorze (rysowanie, zapis do framebuffera, przeliczanie dotyku, instalator).
 Jeszcze nie na drukarce.
