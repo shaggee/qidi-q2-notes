@@ -1,0 +1,22 @@
+[Unit]
+Description=qbdisplay on the QIDI Q2 (replaces the QIDI screen program while running)
+After=moonraker.service
+Wants=moonraker.service
+# starting this stops QIDI's screen program; starting qidi-client stops this
+Conflicts=qidi-client.service
+
+[Service]
+Type=simple
+# root like QIDI's own screen program (framebuffer, touch, backlight); code lives in a root-only folder
+WorkingDirectory=/usr/local/lib/qbdisplay-q2
+Environment=PYTHONUNBUFFERED=1
+Environment=HOME=/home/mks
+ExecStart=/usr/bin/python3 -m qbdisplay.q2main -c /home/mks/printer_data/config/qbdisplay.cfg
+# prototype: whenever this stops (also on a crash) QIDI's screen program comes back
+ExecStopPost=/bin/systemctl start --no-block qidi-client.service
+Restart=no
+Nice=5
+MemoryMax=120M
+
+[Install]
+WantedBy=multi-user.target
