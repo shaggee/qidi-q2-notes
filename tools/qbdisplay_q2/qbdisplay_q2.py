@@ -25,7 +25,7 @@ TARBALL = "https://codeload.github.com/%s/tar.gz/%s" % (UPSTREAM, COMMIT)
 HERE = os.path.dirname(os.path.abspath(__file__))
 FILES = os.path.join(HERE, "files")
 RAW = "https://raw.githubusercontent.com/shaggee/qidi-q2-notes/main/tools/qbdisplay_q2/files/"
-OURS = ["fbdisplay.py", "q2main.py", "qbdisplay-q2.cfg", "qbdisplay-q2.service"]
+OURS = ["fbdisplay.py", "q2main.py", "pl.py", "qbdisplay-q2.cfg", "qbdisplay-q2.service"]
 LIB = "/usr/local/lib/qbdisplay-q2"
 UNIT = "/etc/systemd/system/qbdisplay-q2.service"
 CFG = "/home/mks/printer_data/config/qbdisplay.cfg"
@@ -99,7 +99,7 @@ def install():
                 continue
             m.name = parts[1]
             tf.extract(m, tmp)
-    for name in ("fbdisplay.py", "q2main.py"):
+    for name in ("fbdisplay.py", "q2main.py", "pl.py"):
         with open(os.path.join(tmp, "qbdisplay", name), "wb") as f:
             f.write(ours(name))
     sh("chown", "-R", "root:root", tmp)

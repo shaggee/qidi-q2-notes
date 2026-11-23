@@ -37,6 +37,66 @@ updates.QIDI_GITHUB = 'QIDITECH/QIDI_Q2'
 log = logging.getLogger('qbdisplay')
 
 
+def setup_q2():
+    """Q2 additions: Polish language (needs TTF rendering, so only with the framebuffer driver)."""
+    from . import i18n
+    from .pl import PL
+    from .sim import load_pil_font
+    from .ui import system as ui_system
+
+    # --- language table, language list, "polski" -> pl, decimal comma
+    i18n.TABLES['pl'] = PL
+    if 'pl' not in dict(i18n.LANGUAGES):
+        i18n.LANGUAGES = tuple(i18n.LANGUAGES) + (('pl', 'Polski'),)
+    _normalize = i18n.normalize
+
+    def normalize(lang):
+        s = str(lang or '').strip().lower()
+        if s.startswith('pol') or s.startswith('pl'):
+            return 'pl'
+        return _normalize(lang)
+    i18n.normalize = normalize
+    i18n.decimal = lambda text: text.replace('.', ',') if i18n.get_language() in ('de', 'pl') else text
+
+    # --- Polish letters: TJC fonts are ISO-8859-1, but here text is drawn with the TTF fonts
+    _sanitize = fonts.sanitize
+
+    def sanitize(text):
+        return ''.join(ch if 0x100 <= ord(ch) < 0x180 else _sanitize(ch) for ch in str(text))
+    fonts.sanitize = sanitize
+
+    _char_width = fonts.char_width
+    _widths = {}
+
+    def char_width(ch, fid):
+        if ord(ch) < 256:
+            return _char_width(ch, fid)
+        key = (ch, fid)
+        if key not in _widths:
+            font = load_pil_font(fonts.FONTS[fid])
+            try:
+                w = font.getlength(ch)
+            except AttributeError:
+                w = font.getsize(ch)[0]
+            _widths[key] = int(round(w)) + fonts.TRACKING.get(fid, 0)
+        return _widths[key]
+    fonts.char_width = char_width
+
+    # --- language page: three rows, no note (the note would overlap the third row)
+    def build_lang(self, frame):
+        ctx = self.ctx
+        cur = i18n.get_language()
+        for i, (code, name) in enumerate(i18n.LANGUAGES):
+            on = code == cur
+            self._row(frame, 'r.lang.' + code, 52 + i * 84, name,
+                      i18n._('aktiv') if on else i18n._('Antippen zum Wechseln'), toggle=on,
+                      action=None if on else (lambda c=code: ctx.set_language(c)))
+        if len(i18n.LANGUAGES) <= 2:
+            self._row(frame, 'r.langnote', 220, i18n._('Hinweis'),
+                      i18n._('Gilt sofort und bleibt nach einem Neustart erhalten.'))
+    ui_system.SystemPage.build_lang = build_lang
+
+
 def _opt(cfg, key, default, kind=str):
     try:
         if kind is bool:
@@ -55,6 +115,7 @@ def main(argv=None):
     args = ap.parse_args(argv)
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO,
                         format='%(asctime)s %(levelname)s %(name)s: %(message)s')
+    setup_q2()
     cfg = Config(args.config)
     fonts.set_monospace(cfg.getbool('display', 'monospace_fonts'))
     disp = FbDisplay(fb=_opt(cfg, 'fb', '/dev/fb0'),

@@ -10,7 +10,9 @@ the Q2 has a plain 480×272 LCD (`/dev/fb0`) with a Goodix touch panel, drawn by
 - `files/fbdisplay.py` – display driver with the same interface as qbdisplay's `TjcDisplay`: the TJC drawing
   commands are executed by qbdisplay's own simulator into an 800×480 image, scaled to 453×272 (black 13 px bars
   left/right) and written to `/dev/fb0`; Goodix touches are mapped back to 800×480; backlight and sleep.
-- `files/q2main.py` – entry point (`python3 -m qbdisplay.q2main`).
+- `files/q2main.py` – entry point (`python3 -m qbdisplay.q2main`); adds **Polish** to the language list,
+  allows Polish letters (drawn with the TTF fonts) and lays out three languages on System › Language.
+- `files/pl.py` – Polish translation of all 403 texts (default language in `qbdisplay-q2.cfg`).
 
 Preview at the Q2's real resolution (480×272):
 
@@ -38,7 +40,7 @@ sudo python3 qbdisplay_q2.py stop         # back to QIDI's screen (a reboot does
 sudo python3 qbdisplay_q2.py log          # last log lines
 sudo python3 qbdisplay_q2.py uninstall
 ```
-Settings: `~/printer_data/config/qbdisplay.cfg` (`language: en|de`; touch in the wrong place →
+Settings: `~/printer_data/config/qbdisplay.cfg` (`language: pl|en|de`; touch in the wrong place →
 `touch_swap_xy`, `touch_invert_x`, `touch_invert_y`).
 
 ---
@@ -55,7 +57,9 @@ i niczego nie zmienia w samym qbdisplay:
 - `files/fbdisplay.py` – sterownik ekranu z tym samym interfejsem co `TjcDisplay`: polecenia rysowania wykonuje
   symulator qbdisplay w obrazie 800×480, który jest skalowany do 453×272 (czarne paski 13 px po bokach) i zapisywany
   do `/dev/fb0`; dotyk Goodix przeliczany z powrotem na 800×480; podświetlenie i usypianie.
-- `files/q2main.py` – punkt startowy (`python3 -m qbdisplay.q2main`).
+- `files/q2main.py` – punkt startowy (`python3 -m qbdisplay.q2main`); dodaje **język polski** do listy,
+  pozwala na polskie litery (rysowane czcionkami TTF) i mieści trzy języki w System › Język.
+- `files/pl.py` – polskie tłumaczenie wszystkich 403 tekstów (domyślny język w `qbdisplay-q2.cfg`).
 
 Podgląd w prawdziwej rozdzielczości Q2 – obrazki wyżej.
 
@@ -71,5 +75,5 @@ Status: 🟡 sprawdzone w symulatorze (rysowanie, zapis do framebuffera, przelic
 Jeszcze nie na drukarce.
 
 Użycie: polecenia wyżej (`check`, `install`, `start`, `stop`, `log`, `uninstall`). Ustawienia:
-`~/printer_data/config/qbdisplay.cfg` (`language: en|de`; dotyk w złym miejscu → `touch_swap_xy`,
+`~/printer_data/config/qbdisplay.cfg` (`language: pl|en|de`; dotyk w złym miejscu → `touch_swap_xy`,
 `touch_invert_x`, `touch_invert_y`).
