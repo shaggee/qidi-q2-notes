@@ -12,7 +12,8 @@ the Q2 has a plain 480×272 LCD (`/dev/fb0`) with a Goodix touch panel, drawn by
   left/right) and written to `/dev/fb0`; Goodix touches are mapped back to 800×480; backlight and sleep.
 - `files/q2main.py` – entry point (`python3 -m qbdisplay.q2main`); adds **Polish** to the language list,
   allows Polish letters (drawn with the TTF fonts) and lays out three languages on System › Language.
-- `files/pl.py` – Polish translation of all 403 texts (default language in `qbdisplay-q2.cfg`).
+- `files/pl.py` – Polish translation of all 403 texts (default language is English; switch on the display under
+  System › Language or with `language: pl` in `qbdisplay.cfg`).
 
 Preview at the Q2's real resolution (480×272):
 
@@ -40,7 +41,7 @@ sudo python3 qbdisplay_q2.py stop         # back to QIDI's screen (a reboot does
 sudo python3 qbdisplay_q2.py log          # last log lines
 sudo python3 qbdisplay_q2.py uninstall
 ```
-Settings: `~/printer_data/config/qbdisplay.cfg` (`language: pl|en|de`; touch in the wrong place →
+Settings: `~/printer_data/config/qbdisplay.cfg` (`language: en|pl|de`; touch in the wrong place →
 `touch_swap_xy`, `touch_invert_x`, `touch_invert_y`).
 
 ---
@@ -59,7 +60,8 @@ i niczego nie zmienia w samym qbdisplay:
   do `/dev/fb0`; dotyk Goodix przeliczany z powrotem na 800×480; podświetlenie i usypianie.
 - `files/q2main.py` – punkt startowy (`python3 -m qbdisplay.q2main`); dodaje **język polski** do listy,
   pozwala na polskie litery (rysowane czcionkami TTF) i mieści trzy języki w System › Język.
-- `files/pl.py` – polskie tłumaczenie wszystkich 403 tekstów (domyślny język w `qbdisplay-q2.cfg`).
+- `files/pl.py` – polskie tłumaczenie wszystkich 403 tekstów (domyślnie angielski; zmiana na ekranie w
+  System › Język albo `language: pl` w `qbdisplay.cfg`).
 
 Podgląd w prawdziwej rozdzielczości Q2 – obrazki wyżej.
 
@@ -75,5 +77,5 @@ Status: 🟡 sprawdzone w symulatorze (rysowanie, zapis do framebuffera, przelic
 Jeszcze nie na drukarce.
 
 Użycie: polecenia wyżej (`check`, `install`, `start`, `stop`, `log`, `uninstall`). Ustawienia:
-`~/printer_data/config/qbdisplay.cfg` (`language: pl|en|de`; dotyk w złym miejscu → `touch_swap_xy`,
+`~/printer_data/config/qbdisplay.cfg` (`language: en|pl|de`; dotyk w złym miejscu → `touch_swap_xy`,
 `touch_invert_x`, `touch_invert_y`).

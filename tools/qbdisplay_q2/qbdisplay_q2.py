@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 # qbdisplay_q2.py - install qbdisplay (QIDI Plus4 display UI by CharlyBrownFR) on the QIDI Q2. PROTOTYPE.
-# PL: instaluje qbdisplay (interfejs ekranu z QIDI Plus4, autor CharlyBrownFR) na QIDI Q2. PROTOTYP.
 #
-#   sudo python3 qbdisplay_q2.py check      read only / tylko odczyt
-#   sudo python3 qbdisplay_q2.py install    download + install (QIDI screen stays active / ekran QIDI zostaje)
-#   sudo python3 qbdisplay_q2.py start      qbdisplay on the screen (stops qidi-client) / qbdisplay na ekranie
-#   sudo python3 qbdisplay_q2.py stop       back to QIDI's screen / powrót do ekranu QIDI
-#   sudo python3 qbdisplay_q2.py log        last log lines / ostatnie linie logu
+#   sudo python3 qbdisplay_q2.py check      read only
+#   sudo python3 qbdisplay_q2.py install    download + install (QIDI screen stays active)
+#   sudo python3 qbdisplay_q2.py start      qbdisplay on the screen (stops qidi-client)
+#   sudo python3 qbdisplay_q2.py stop       back to QIDI's screen
+#   sudo python3 qbdisplay_q2.py log        last log lines
 #   sudo python3 qbdisplay_q2.py uninstall
 #
 # Nothing is flashed. The service is NOT enabled at boot: after a reboot QIDI's screen is back.
-# PL: nic nie jest wgrywane. Usługa NIE startuje z systemem: po restarcie wraca ekran QIDI.
 import io
 import os
 import shutil
@@ -37,7 +35,7 @@ def sh(*cmd, check=False):
 
 def need_root():
     if os.geteuid() != 0:
-        print("Run with sudo / uruchom przez sudo: sudo python3 %s %s" % (os.path.abspath(__file__), sys.argv[1]))
+        print("Run with sudo: sudo python3 %s %s" % (os.path.abspath(__file__), sys.argv[1]))
         sys.exit(1)
 
 
@@ -60,30 +58,30 @@ def check():
     try:
         size = open("/sys/class/graphics/fb0/virtual_size").read().strip()
         bpp = open("/sys/class/graphics/fb0/bits_per_pixel").read().strip()
-        line(bpp == "32", "screen / ekran: %s, %s bit" % (size, bpp))
+        line(bpp == "32", "screen: %s, %s bit" % (size, bpp))
     except OSError as e:
-        line(False, "screen / ekran: %s" % e)
-    line(os.path.exists("/dev/input/event0"), "touch / dotyk: /dev/input/event0")
+        line(False, "screen: %s" % e)
+    line(os.path.exists("/dev/input/event0"), "touch: /dev/input/event0")
     r = sh("python3", "-c", "import PIL; print(PIL.__version__)")
     line(r.returncode == 0, "PIL: %s" % (r.stdout.strip() or r.stderr.strip()[-80:]))
     r = sh("systemctl", "cat", "qidi-client.service")
-    line(r.returncode == 0, "QIDI screen program / program ekranu QIDI: qidi-client.service")
-    line(os.path.isdir("/home/mks/printer_data/config"), "config folder / folder konfiguracji")
+    line(r.returncode == 0, "QIDI screen program: qidi-client.service")
+    line(os.path.isdir("/home/mks/printer_data/config"), "config folder")
     avail = 0
     for l in open("/proc/meminfo"):
         if l.startswith("MemAvailable:"):
             avail = int(l.split()[1]) // 1024
-    line(avail >= 120, "free memory / wolna pamięć: %d MB (need / potrzeba >= 120)" % avail)
+    line(avail >= 120, "free memory: %d MB (need >= 120)" % avail)
     return ok
 
 
 def install():
     need_root()
-    print("Checks / sprawdzenie:")
+    print("Checks:")
     if not check():
-        print("Nothing changed / nic nie zmieniono")
+        print("Nothing changed")
         return 1
-    print("Downloading / pobieranie %s @ %s ..." % (UPSTREAM, COMMIT[:8]))
+    print("Downloading %s @ %s ..." % (UPSTREAM, COMMIT[:8]))
     with urllib.request.urlopen(TARBALL, timeout=120) as r:
         data = r.read()
     tmp = LIB + ".new"
@@ -114,14 +112,14 @@ def install():
             f.write(ours("qbdisplay-q2.cfg"))
         st = os.stat(os.path.dirname(CFG))
         os.chown(CFG, st.st_uid, st.st_gid)
-        print("Config / konfiguracja:", CFG)
+        print("Config:", CFG)
     else:
-        print("Config kept / konfiguracja zostaje:", CFG)
+        print("Config kept:", CFG)
     sh("systemctl", "daemon-reload")
     r = sh("python3", "-c", "import sys; sys.path.insert(0, %r); import qbdisplay.q2main" % LIB)
     print(("  OK    " if r.returncode == 0 else "  FAIL  ") + "import qbdisplay.q2main " + r.stderr.strip()[-200:])
-    print("\nInstalled / zainstalowane. QIDI's screen is unchanged / ekran QIDI bez zmian.")
-    print("Try it / wypróbuj:  sudo python3 %s start" % os.path.abspath(__file__))
+    print("\nInstalled. QIDI's screen is unchanged.")
+    print("Try it:  sudo python3 %s start" % os.path.abspath(__file__))
     return 0
 
 
@@ -155,7 +153,7 @@ def uninstall():
             os.remove(p)
     shutil.rmtree(LIB, ignore_errors=True)
     sh("systemctl", "daemon-reload")
-    print("Removed / usunięto. Config left / zostaje konfiguracja:", CFG)
+    print("Removed. Config left in place:", CFG)
     return 0
 
 
