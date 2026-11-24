@@ -83,6 +83,7 @@ Accelerations after the accelerometer fix and a new input shaper calibration
 - **KAMP mesh margin 10 mm** – set on the printer (`KAMP/KAMP_settings.cfg` → `variable_mesh_margin`), not in Orca;
   see [bed-leveling.md](bed-leveling.md). With 0 the brim and the purge line are printed on an unmeasured area.
 - **Max jerk X/Y = `square_corner_velocity` from printer.cfg** (8 on this printer).
+- **Save the printer profile as your own preset** (Save as, e.g. "Qidi Q2 – mine"). An Orca update resets QIDI's system presets, including the start G-code, back to the stock purge lines with `Z-0.1`. User presets are kept. Start G-code: [orca/start-gcode-purge-line.gcode](../orca/start-gcode-purge-line.gcode).
 
 ## Filament profiles
 
@@ -190,6 +191,7 @@ Ustawienia drukarki:
 - **Margines siatki KAMP 10 mm** – ustawia się na drukarce (`KAMP/KAMP_settings.cfg` → `variable_mesh_margin`), nie w
   Orce; zobacz [bed-leveling.md](bed-leveling.md). Przy 0 brim i linia płukania leżą na niezmierzonym miejscu.
 - **Maks. jerk X/Y = `square_corner_velocity` z printer.cfg** (tu 8).
+- **Zapisz profil drukarki jako własny** (Zapisz jako, np. „Qidi Q2 – moje”). Aktualizacja Orki przywraca profile systemowe QIDI, razem z G-code startowym, do fabrycznych linii płukania z `Z-0.1`. Profile użytkownika zostają. G-code startowy: [orca/start-gcode-purge-line.gcode](../orca/start-gcode-purge-line.gcode).
 
 ### Profile filamentów
 PLA (cool plate): dysza 210 °C, stół 45/40 °C (płyta 30–50 °C), wentylator pomocniczy 40% (20% gdy duże płaskie
