@@ -33,6 +33,7 @@ on a single printer with **already customised macros**, so read before copying.
 | [`docs/qidi-box.md`](docs/qidi-box.md) | Box load/unload parameters read from QIDI's code (with the stock values), timings, a failed speed-up |
 | [`docs/toolhead-accelerometer.md`](docs/toolhead-accelerometer.md) | Accelerometer fix (383 → 1603 samples/s) done from a Linux host, with real outputs, and the new input shaper values |
 | [`docs/troubleshooting.md`](docs/troubleshooting.md) | Errors met on the way and what they meant |
+| [`docs/fluidd-latest.md`](docs/fluidd-latest.md) | Latest upstream Fluidd on port 8099, next to QIDI's Fluidd (which keeps the Box panel) |
 | [`docs/helixscreen.md`](docs/helixscreen.md) | **Recommended screen UI:** HelixScreen on the Q2 – install, installer warnings, DRM vs framebuffer, screen sharing |
 | [`docs/security-and-updates.md`](docs/security-and-updates.md) | ADB root shell off, blocking firmware updates |
 | [`macros/`](macros) | Macro changes as small, documented snippets (not whole QIDI files) |
@@ -99,6 +100,7 @@ z **już zmienionymi makrami**, więc przeczytaj przed skopiowaniem.
 | [`docs/qidi-box.md`](docs/qidi-box.md) | Parametry ładowania/rozładowania Boxa odczytane z kodu QIDI (z wartościami fabrycznymi), czasy, nieudana próba przyspieszenia |
 | [`docs/toolhead-accelerometer.md`](docs/toolhead-accelerometer.md) | Naprawa akcelerometru (383 → 1603 próbek/s) z hosta Linux, z prawdziwymi wynikami, i nowe wartości Input Shapera |
 | [`docs/troubleshooting.md`](docs/troubleshooting.md) | Napotkane błędy i co znaczyły |
+| [`docs/fluidd-latest.md`](docs/fluidd-latest.md) | Najnowszy oficjalny Fluidd na porcie 8099, obok Fluidd QIDI (z panelem Boxa) |
 | [`docs/helixscreen.md`](docs/helixscreen.md) | **Zalecany interfejs ekranu:** HelixScreen na Q2 – instalacja, ostrzeżenia, DRM czy framebuffer, udostępnianie ekranu |
 | [`docs/security-and-updates.md`](docs/security-and-updates.md) | Wyłączenie ADB (root bez hasła), blokada aktualizacji |
 | [`macros/`](macros) | Zmiany w makrach jako małe, opisane fragmenty (nie całe pliki QIDI) |
