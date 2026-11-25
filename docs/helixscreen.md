@@ -59,7 +59,7 @@ restart – a launcher and a watchdog start first).
 
 ## Polish translation
 
-A full Polish translation (`pl.yml`, all 6235 strings) is in [`helixscreen-pl/`](../helixscreen-pl/). Accepted upstream ([#2162](https://github.com/prestonbrown/helixscreen/pull/2162), cherry-picked into main and release/1.1): **Polish (Polski) is in the language list from HelixScreen 1.1.1.** A review of the strings the maintainer added later is in a follow-up PR.
+A full Polish translation (`pl.yml`, all 6235 strings) is in [`helixscreen-pl/`](../helixscreen-pl/). Accepted upstream ([#2162](https://github.com/prestonbrown/helixscreen/pull/2162), cherry-picked into main and release/1.1): **Polish (Polski) is in the language list from HelixScreen 1.1.1.** A review of the strings the maintainer added later: [#2194](https://github.com/prestonbrown/helixscreen/pull/2194) (main) and [#2195](https://github.com/prestonbrown/helixscreen/pull/2195) (release/1.1, for 1.1.2).
 
 ---
 
@@ -108,4 +108,4 @@ sprawdzone na Q2 autora.
 
 ## Polskie tłumaczenie
 
-Pełne polskie tłumaczenie (`pl.yml`, wszystkie 6235 tekstów) jest w [`helixscreen-pl/`](../helixscreen-pl/). Przyjęte przez autora ([#2162](https://github.com/prestonbrown/helixscreen/pull/2162), włączone do main i release/1.1): **język polski jest na liście od HelixScreen 1.1.1.** Przegląd tekstów dodanych później przez autora jest w kolejnym PR.
+Pełne polskie tłumaczenie (`pl.yml`, wszystkie 6235 tekstów) jest w [`helixscreen-pl/`](../helixscreen-pl/). Przyjęte przez autora ([#2162](https://github.com/prestonbrown/helixscreen/pull/2162), włączone do main i release/1.1): **język polski jest na liście od HelixScreen 1.1.1.** Przegląd tekstów dodanych później przez autora: [#2194](https://github.com/prestonbrown/helixscreen/pull/2194) (main) i [#2195](https://github.com/prestonbrown/helixscreen/pull/2195) (release/1.1, do 1.1.2).
